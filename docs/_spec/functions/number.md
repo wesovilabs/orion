@@ -28,7 +28,7 @@ nav_order: 3
 
 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature014.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature014.hcl)
 ```hcl
 scenario "number operation with int values" {
   given "int values" {
@@ -90,7 +90,7 @@ scenario "number operation with int values" {
 | <  | It returns true if `x` is lower than `y` and false otherwise| x<y|
 | <>= | It returns true if `x` is lower than or equal to  `y` and false otherwise| x<>=y|
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature015.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature015.hcl)
 ```hcl
 scenario "number comparisons" {
   given "input values" {

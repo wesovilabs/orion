@@ -13,7 +13,7 @@ The includes are defined in attribute `includes`,  of type array, in the root of
 
 Let's go through the below example. We could define a file with common hooks.
 
-**Example: common-hooks.hcl** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/common-hooks.hcl)
+**Example: common-hooks.hcl** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/common-hooks.hcl)
 ```hcl
 before sample {
   set a {
@@ -34,7 +34,7 @@ after common {
 
 The common-hooks.hcl file could be included in any feature:
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature008.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature008.hcl)
 ```hcl
 includes = [
   "common-hooks.hcl"

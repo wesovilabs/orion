@@ -18,7 +18,7 @@ nav_order: 4
 | len  | It returns the numer of elements in the collection `coll` | len(coll) | 
 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature016.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature016.hcl)
 ```hcl
 scenario "check collection functions" {
   given "set value" {

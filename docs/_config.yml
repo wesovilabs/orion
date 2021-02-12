@@ -8,7 +8,7 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 #
-# If you need help with YAML syntax, here are some quick references for you: 
+# If you need help with YAML syntax, here are some quick references for you:
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 #
@@ -23,7 +23,7 @@ email: ivan.corrales.solera@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Orion is born to simplify the way we write our acceptance tests.
 baseurl: "/orion" # the subpath of your site, e.g. /blog
-url: "https://wesovilabs-tools.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://wesovilabs.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: wesovilabs
 github_username:  ivancorrales
 
@@ -82,7 +82,7 @@ search:
 # Aux links for the upper right navigation
 #aux_links:
 #  "Orion on GitHub":
-#    - "//github.com/wesovilabs-tools/orion"
+#    - "//github.com/wesovilabs/orion"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: false
@@ -103,7 +103,7 @@ back_to_top_text: "Back to top"
 # appears at the bottom of every page's main content
 # Note: The footer_content option is deprecated and will be removed in a future major release. Please use `_includes/footer_custom.html` for more robust
 # markup / liquid-based content.
-#footer_content: "Copyright &copy; 1984-2921 Orion. Distributed by an <a href=\"https://github.com/wesovilabs-tools/orion/tree/master/LICENSE.txt\">MIT license.</a>"
+#footer_content: "Copyright &copy; 1984-2921 Orion. Distributed by an <a href=\"https://github.com/wesovilabs/orion/tree/master/LICENSE.txt\">MIT license.</a>"
 footer_content: "Created by <a href=\"https://www.linkedin.com/in/ivan-corrales-solera/\">Iván Corrales Solera</a>"
 
 # Footer last edited timestamp
@@ -113,7 +113,7 @@ last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https:/
 # Footer "Edit this page on GitHub" link text
 #gh_edit_link: true # show or hide edit this page link
 #gh_edit_link_text: "Edit this page on GitHub."
-#gh_edit_repository: "https://github.com/wesovilabs-tools/orion" # the github URL for your repo
+#gh_edit_repository: "https://github.com/wesovilabs/orion" # the github URL for your repo
 #gh_edit_branch: "master" # the branch that your docs is served from
 # gh_edit_source: docs # the source that your files originate from
 #gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
@@ -131,7 +131,7 @@ collections:
     output: true
   spec:
     permalink: "/:collection/:path/"
-    output: true        
+    output: true
   contact:
     permalink: "/:collection/:path/"
     output: true

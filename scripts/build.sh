@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set module
-MODULE="github.com/wesovilabs-tools/orion"
+MODULE="github.com/wesovilabs/orion"
 DOCKER_IMG=wesovilabs/orion
 
 # Get the parent directory of where this script is.

@@ -11,7 +11,7 @@ has_toc: false
 
 A feature is described in a file and it contains one or more scenarios. The extension of the file doesn't matter at all. On the other hand,  we recommend you to use extension `hcl` so far. 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature001.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature001.hcl)
 ```hcl
 description = <<EOF
     This feature is used to demonstrate that both add and subs operations 

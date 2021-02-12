@@ -11,13 +11,13 @@ nav_order: 1
 
 ### Install the pre-compiled binary
 
-**manually**: Download the pre-compiled binaries from the [releases page](https://github.com/wesovilabs-tools/orion/releases) and copy to the desired location
+**manually**: Download the pre-compiled binaries from the [releases page](https://github.com/wesovilabs/orion/releases) and copy to the desired location
 
 Latest version: beta-0.0.1
 
-- [osx](https://github.com/wesovilabs-tools/orion/releases/download/beta-0.0.1/orion-cli.darwin) 
-- [linux](https://github.com/wesovilabs-tools/orion/releases/download/beta-0.0.1/orion-cli.linux) 
-- [windows](https://github.com/wesovilabs-tools/orion/releases/download/beta-0.0.1/orion-cli.exe) 
+- [osx](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion-cli.darwin) 
+- [linux](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion-cli.linux) 
+- [windows](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion-cli.exe) 
 
 **Tip**
 

@@ -19,7 +19,7 @@ The hooks are represented with keyword `before` or `after` and followed by a lab
 This label is a tag, and the hook will be executed for those scenarios with this tag.
 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature006.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature006.hcl)
 ```hcl
 before sample {
   set a {
@@ -67,7 +67,7 @@ scenario "scenario2" {
 There are two special hooks that will be executed before and after each scenario. In this case
 the tag must be `each`.  
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature007.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature007.hcl)
 ```hcl
 before each {
   description = "common hook to be executed before each scenario"

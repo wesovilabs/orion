@@ -1,4 +1,4 @@
-module github.com/wesovilabs-tools/orion
+module github.com/wesovilabs/orion
 
 require (
 	github.com/daviddengcn/go-colortext v1.0.0

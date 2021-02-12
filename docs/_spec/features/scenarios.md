@@ -11,7 +11,7 @@ nav_order: 2
 
 A scenario corresponds to the definition of an acceptance test.  
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature003.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature003.hcl)
 
 ```hcl
 scenario "square root operation work as expected" {
@@ -59,7 +59,7 @@ To write valid scenarios must meet the following standards:
 As you could realize the structure of a valid sceneario will be G-W-T, W-T, but also G-W-T-W-T ....  
 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature004.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature004.hcl)
 ```hcl
 scenario "do some math operations" {
   given "a number higher than zero" {
@@ -170,7 +170,7 @@ just defining attribute `examples` and providing a collection of data.
 
 In the above example,  the scenario will be executed four times. 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature005.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature005.hcl)
 ```
 scenario "operation add" {
     examples = [

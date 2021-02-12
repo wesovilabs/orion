@@ -17,7 +17,7 @@ nav_order: 1
 | !=            | It returns true if `s1` and `s2`  are not equal and false otherwise | s1!=s2 |
 | eqIgnorecase  | Like operation `==` but case insensitive| eqIgnoreCase(s1,s2)| 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature009.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature009.hcl)
 ```hcl
 scenario "text functions" {
   given "the an input sentence"{
@@ -65,7 +65,7 @@ scenario "text functions" {
 | replaceAll    | It replaces `old` by `new` in `s`  as many time as `ld` appears  | replaceAll(s,old,new) |
 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature010.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature010.hcl)
 ```hcl
 input {
   arg s {
@@ -118,7 +118,7 @@ scenario "check string converter oeprations" {
 
 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature011.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature011.hcl)
 ```hcl
 input {
   arg s {
@@ -162,7 +162,7 @@ scenario "check string search oeprations" {
 | len   | It returns the number of characters in `s` | len(s)|
 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature012.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature012.hcl)
 ```hcl
 input {
   arg s {

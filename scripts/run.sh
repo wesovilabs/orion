@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Set module
-MODULE="github.com/wesovilabs-tools/orion"
+MODULE="github.com/wesovilabs/orion"
 
 RUN_MODE=${RUN_MODE:-code}
 

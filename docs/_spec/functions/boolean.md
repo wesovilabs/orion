@@ -20,7 +20,7 @@ nav_order: 2
 | ()  | group conditions | (val1 && val2) | 
 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature013.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature013.hcl)
 ```hcl
 scenario "check boolean operations" {
   given "set value" {

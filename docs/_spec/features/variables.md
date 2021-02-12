@@ -12,7 +12,7 @@ parent: Feature
 It's used to run acceptance tests with data provided by the user. Variables are defined inside a block `input`. 
 Only one block `input` is permitted per file. 
 
-**Example** [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/feature002.hcl)
+**Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature002.hcl)
 
 ```hcl
 input {
@@ -50,7 +50,7 @@ Providing variables is not rquired since both, variables `people` and `company` 
 
 So far, variables can be provided by passing a HCL file. This file contains one entre per variable.
 
-**Example**: [download](https://raw.githubusercontent.com/wesovilabs-tools/orion-examples/master/site/variables002.hcl)
+**Example**: [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/variables002.hcl)
 
 ```hcl
 people = [
