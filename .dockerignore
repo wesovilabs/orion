@@ -1,0 +1,8 @@
+docs
+.ics/examples
+githooks
+.idea
+.gitignore
+.git
+Makefile
+README.md

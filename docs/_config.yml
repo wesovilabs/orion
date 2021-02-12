@@ -1,0 +1,159 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you: 
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: Orion
+email: ivan.corrales.solera@gmail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Orion is born to simplify the way we write our acceptance tests.
+baseurl: "/orion" # the subpath of your site, e.g. /blog
+url: "https://wesovilabs-tools.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: wesovilabs
+github_username:  ivancorrales
+
+theme: just-the-docs
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+remote_theme: pmarsceill/just-the-docs
+# logo:  /assets/logo.jpg
+search_enabled: true
+search:
+  # Split pages into sections that can be searched individually
+  # Supports 1 - 6, default: 2
+  heading_level: 2
+  # Maximum amount of previews per search result
+  # Default: 3
+  previews: 3
+  # Maximum amount of words to display before a matched word in the preview
+  # Default: 5
+  preview_words_before: 5
+  # Maximum amount of words to display after a matched word in the preview
+  # Default: 10
+  preview_words_after: 10
+  # Set the search token separator
+  # Default: /[\s\-/]+/
+  # Example: enable support for hyphenated search words
+  tokenizer_separator: /[\s/]+/
+  # Display the relative url in search results
+  # Supports true (default) or false
+  rel_url: true
+  # Enable or disable the search button that appears in the bottom right corner of every page
+  # Supports true or false (default)
+  button: false
+
+# Aux links for the upper right navigation
+#aux_links:
+#  "Orion on GitHub":
+#    - "//github.com/wesovilabs-tools/orion"
+
+# Makes Aux links open in a new tab. Default is false
+aux_links_new_tab: false
+# Sort order for navigation links
+# nav_sort: case_insensitive # default, equivalent to nil
+nav_sort: case_sensitive # Capital letters sorted before lowercase
+
+# Heading anchor links appear on hover over h1-h6 tags in page content
+# allowing users to deep link to a particular heading on a page.
+#
+# Supports true (default) or false
+heading_anchors: true
+
+# Footer content
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
+# appears at the bottom of every page's main content
+# Note: The footer_content option is deprecated and will be removed in a future major release. Please use `_includes/footer_custom.html` for more robust
+# markup / liquid-based content.
+#footer_content: "Copyright &copy; 1984-2921 Orion. Distributed by an <a href=\"https://github.com/wesovilabs-tools/orion/tree/master/LICENSE.txt\">MIT license.</a>"
+footer_content: "Created by <a href=\"https://www.linkedin.com/in/ivan-corrales-solera/\">Iván Corrales Solera</a>"
+
+# Footer last edited timestamp
+last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
+last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
+
+# Footer "Edit this page on GitHub" link text
+#gh_edit_link: true # show or hide edit this page link
+#gh_edit_link_text: "Edit this page on GitHub."
+#gh_edit_repository: "https://github.com/wesovilabs-tools/orion" # the github URL for your repo
+#gh_edit_branch: "master" # the branch that your docs is served from
+# gh_edit_source: docs # the source that your files originate from
+#gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
+
+color_scheme: light
+
+# Google Analytics Tracking (optional)
+# e.g, UA-1234567-89
+ga_tracking: UA-188948093-1
+ga_tracking_anonymize_ip: false # Use GDPR compliant Google Analytics settings (true by default)
+
+collections:
+  gettingstarted:
+    permalink: "/:collection/:path/"
+    output: true
+  spec:
+    permalink: "/:collection/:path/"
+    output: true        
+  contact:
+    permalink: "/:collection/:path/"
+    output: true
+
+just_the_docs:
+  collections:
+    gettingstarted:
+      name: Getting started
+    spec:
+      name: Specification
+    contact:
+      name: Contact & Support
+
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
