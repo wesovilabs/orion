@@ -1,20 +1,8 @@
-include .env
+all: setup fmt lint test test-e2e build build-docker
 
-# Docker
-DOCKER_IMG=${ORG}/$(PRODUCT)
-
-all: setup clean fmt lint test test-e2e build build-docker
-
-.PHONY: clean
-clean:  #
-	rm -fR bin dist
-
-.PHONY: build
-build: build-dev
-
-.PHONY: build-%
-build-%:
-	BUILD_MODE=$* sh scripts/build.sh
+.PHONY: setup
+setup:  #
+	sh scripts/setup.sh
 
 .PHONY: fmt
 fmt: ; @ ## Code formatter
@@ -31,9 +19,12 @@ test: ; test-unit
 test-%: ; @ ## Run tests
 	TEST_MODE=$* sh scripts/test.sh
 
-.PHONY: deps
-deps: ; @ ## Download project dependencies
-	sh scripts/deps.sh
+.PHONY: build
+build: build-dev
+
+.PHONY: build-%
+build-%:
+	BUILD_MODE=$* sh scripts/build.sh
 
 .PHONY: run
 run: run-code;

@@ -8,14 +8,15 @@ DOCKER_IMG=wesovilabs/orion
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 DIR="$( cd -P "$( dirname "$SOURCE" )/.." && pwd )"
+# Change into that directory
+cd "$DIR"
 
 # Get details from commit
 COMMIT=$(git log --pretty=format:'%H' -n 1)
 VERSION=$(git describe --tags --always)
 BUILD_DATE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
-# Change into that directory
-cd "$DIR"
+
 
 # Determine the build mode
 BUILD_MODE=${BUILD_MODE:-dev}
