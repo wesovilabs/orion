@@ -3,7 +3,7 @@ package executor
 import (
 	"io/ioutil"
 
-	"github.com/wesovilabs-tools/orion/dsl"
+	"github.com/wesovilabs/orion/dsl"
 
 	"github.com/zclconf/go-cty/cty"
 
@@ -11,7 +11,7 @@ import (
 	"github.com/hashicorp/hcl/v2/hclsyntax"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 // Parse will parse file content into valid config.

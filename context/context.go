@@ -2,7 +2,7 @@ package context
 
 import (
 	"github.com/hashicorp/hcl/v2"
-	"github.com/wesovilabs-tools/orion/functions"
+	"github.com/wesovilabs/orion/functions"
 	"github.com/zclconf/go-cty/cty"
 )
 

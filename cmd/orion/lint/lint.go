@@ -6,8 +6,8 @@ import (
 
 	ct "github.com/daviddengcn/go-colortext"
 	"github.com/spf13/cobra"
-	"github.com/wesovilabs-tools/orion/cmd/orion/common"
-	"github.com/wesovilabs-tools/orion/executor"
+	"github.com/wesovilabs/orion/cmd/orion/common"
+	"github.com/wesovilabs/orion/executor"
 )
 
 const (

@@ -1,9 +1,9 @@
 package actions
 
 import (
-	"github.com/wesovilabs-tools/orion/context"
-	"github.com/wesovilabs-tools/orion/helper"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/context"
+	"github.com/wesovilabs/orion/helper"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 // ExecuteFn defined type to be implemented by the plugins.

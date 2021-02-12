@@ -8,7 +8,7 @@ import (
 
 	ct "github.com/daviddengcn/go-colortext"
 	log "github.com/sirupsen/logrus"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 // DefTimestampFormat default timestamp format used by the plugin.

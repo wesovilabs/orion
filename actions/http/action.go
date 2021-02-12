@@ -6,12 +6,12 @@ import (
 
 	"github.com/hashicorp/hcl/v2"
 	log "github.com/sirupsen/logrus"
-	"github.com/wesovilabs-tools/orion/actions"
-	"github.com/wesovilabs-tools/orion/actions/http/internal/decoder"
-	"github.com/wesovilabs-tools/orion/actions/http/internal/executor"
-	"github.com/wesovilabs-tools/orion/context"
-	"github.com/wesovilabs-tools/orion/helper"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/actions"
+	"github.com/wesovilabs/orion/actions/http/internal/decoder"
+	"github.com/wesovilabs/orion/actions/http/internal/executor"
+	"github.com/wesovilabs/orion/context"
+	"github.com/wesovilabs/orion/helper"
+	"github.com/wesovilabs/orion/internal/errors"
 	"github.com/zclconf/go-cty/cty"
 )
 

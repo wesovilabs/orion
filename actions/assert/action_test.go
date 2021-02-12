@@ -4,10 +4,10 @@ import (
 	"path"
 	"testing"
 
-	"github.com/wesovilabs-tools/orion/context"
+	"github.com/wesovilabs/orion/context"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/wesovilabs-tools/orion/actions/shared"
+	"github.com/wesovilabs/orion/actions/shared"
 	"github.com/zclconf/go-cty/cty"
 )
 

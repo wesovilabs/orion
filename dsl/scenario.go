@@ -3,16 +3,16 @@ package dsl
 import (
 	"fmt"
 
-	"github.com/wesovilabs-tools/orion/context"
+	"github.com/wesovilabs/orion/context"
 
 	"github.com/zclconf/go-cty/cty"
 
 	"github.com/hashicorp/hcl/v2"
 
-	"github.com/wesovilabs-tools/orion/helper"
+	"github.com/wesovilabs/orion/helper"
 
 	log "github.com/sirupsen/logrus"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 var schemaScenario = &hcl.BodySchema{

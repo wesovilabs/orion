@@ -5,8 +5,8 @@ import (
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/wesovilabs-tools/orion/internal/config"
-	"github.com/wesovilabs-tools/orion/internal/logger"
+	"github.com/wesovilabs/orion/internal/config"
+	"github.com/wesovilabs/orion/internal/logger"
 )
 
 const (

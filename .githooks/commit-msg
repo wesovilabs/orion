@@ -2,7 +2,7 @@
 
 INPUT_FILE=$1
 START_LINE=`head -n1 $INPUT_FILE`
-PATTERN="^(feat|refactor|docs|fix|test|)(:)(.*)"
+PATTERN="^(feat|refactor|docs|fix|test)(:)(.*)"
 if ! [[ "$START_LINE" =~ $PATTERN ]]; then
   echo ""
   echo "[ERROR]  Bad commit message, see example: {prefix}: commit message"

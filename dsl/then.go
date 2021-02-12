@@ -2,9 +2,9 @@ package dsl
 
 import (
 	"github.com/hashicorp/hcl/v2"
-	assert "github.com/wesovilabs-tools/orion/actions/assert"
+	assert "github.com/wesovilabs/orion/actions/assert"
 
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 var schemaThen = &hcl.BodySchema{

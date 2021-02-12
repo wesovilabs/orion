@@ -3,12 +3,12 @@ package decoder
 import (
 	"time"
 
-	"github.com/wesovilabs-tools/orion/helper"
+	"github.com/wesovilabs/orion/helper"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
 	"github.com/hashicorp/hcl/v2"
 
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 const ()

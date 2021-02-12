@@ -6,8 +6,8 @@ import (
 
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/viper"
-	"github.com/wesovilabs-tools/orion/internal/errors"
-	"github.com/wesovilabs-tools/orion/internal/logger"
+	"github.com/wesovilabs/orion/internal/errors"
+	"github.com/wesovilabs/orion/internal/logger"
 )
 
 const (

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/internal/errors"
 	"github.com/zclconf/go-cty/cty"
 )
 

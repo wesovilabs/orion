@@ -4,7 +4,7 @@ import (
 	"path"
 	"testing"
 
-	"github.com/wesovilabs-tools/orion/actions/shared"
+	"github.com/wesovilabs/orion/actions/shared"
 
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"

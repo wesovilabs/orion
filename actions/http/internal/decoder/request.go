@@ -2,9 +2,9 @@ package decoder
 
 import (
 	"github.com/hashicorp/hcl/v2"
-	"github.com/wesovilabs-tools/orion/actions/http/internal/executor"
-	"github.com/wesovilabs-tools/orion/helper"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/actions/http/internal/executor"
+	"github.com/wesovilabs/orion/helper"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 type Request struct {

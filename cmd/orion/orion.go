@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/wesovilabs-tools/orion/cmd/orion/help"
-	"github.com/wesovilabs-tools/orion/cmd/orion/lint"
-	"github.com/wesovilabs-tools/orion/cmd/orion/run"
+	"github.com/wesovilabs/orion/cmd/orion/help"
+	"github.com/wesovilabs/orion/cmd/orion/lint"
+	"github.com/wesovilabs/orion/cmd/orion/run"
 )
 
 const (

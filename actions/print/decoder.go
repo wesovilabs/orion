@@ -3,8 +3,8 @@ package pprint
 
 import (
 	"github.com/hashicorp/hcl/v2"
-	"github.com/wesovilabs-tools/orion/actions"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/actions"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 const (

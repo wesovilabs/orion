@@ -4,7 +4,7 @@ import (
 	ct "github.com/daviddengcn/go-colortext"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 func PrintError(cmd *cobra.Command, err errors.Error) {

@@ -7,7 +7,7 @@ import (
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/stretchr/testify/assert"
-	"github.com/wesovilabs-tools/orion/actions/shared"
+	"github.com/wesovilabs/orion/actions/shared"
 )
 
 var assertDecoderPath = path.Join(

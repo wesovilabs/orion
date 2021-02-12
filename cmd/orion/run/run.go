@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/wesovilabs-tools/orion/cmd/orion/common"
-	"github.com/wesovilabs-tools/orion/executor"
+	"github.com/wesovilabs/orion/cmd/orion/common"
+	"github.com/wesovilabs/orion/executor"
 
 	ct "github.com/daviddengcn/go-colortext"
 	"github.com/spf13/cobra"
-	"github.com/wesovilabs-tools/orion/internal/config"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/internal/config"
+	"github.com/wesovilabs/orion/internal/errors"
 	"github.com/zclconf/go-cty/cty"
 )
 

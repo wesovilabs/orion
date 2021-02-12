@@ -2,8 +2,8 @@ package dsl
 
 import (
 	"github.com/hashicorp/hcl/v2"
-	actions2 "github.com/wesovilabs-tools/orion/actions"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	actions2 "github.com/wesovilabs/orion/actions"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 const blockBody = "body"

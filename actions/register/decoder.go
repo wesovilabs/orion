@@ -2,13 +2,13 @@ package register
 
 import (
 	"github.com/hashicorp/hcl/v2"
-	"github.com/wesovilabs-tools/orion/actions"
-	"github.com/wesovilabs-tools/orion/actions/assert"
-	"github.com/wesovilabs-tools/orion/actions/block"
-	"github.com/wesovilabs-tools/orion/actions/http"
-	"github.com/wesovilabs-tools/orion/actions/mongo"
-	pprint "github.com/wesovilabs-tools/orion/actions/print"
-	"github.com/wesovilabs-tools/orion/actions/set"
+	"github.com/wesovilabs/orion/actions"
+	"github.com/wesovilabs/orion/actions/assert"
+	"github.com/wesovilabs/orion/actions/block"
+	"github.com/wesovilabs/orion/actions/http"
+	"github.com/wesovilabs/orion/actions/mongo"
+	pprint "github.com/wesovilabs/orion/actions/print"
+	"github.com/wesovilabs/orion/actions/set"
 )
 
 var decoders = map[string]actions.Decoder{

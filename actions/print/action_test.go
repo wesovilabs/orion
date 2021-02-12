@@ -10,10 +10,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/wesovilabs-tools/orion/actions/shared"
-	"github.com/wesovilabs-tools/orion/context"
+	"github.com/wesovilabs/orion/actions/shared"
+	"github.com/wesovilabs/orion/context"
 
-	"github.com/wesovilabs-tools/orion/actions/print/internal"
+	"github.com/wesovilabs/orion/actions/print/internal"
 
 	"github.com/hashicorp/hcl/v2"
 	"github.com/stretchr/testify/assert"

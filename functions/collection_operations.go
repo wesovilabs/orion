@@ -4,7 +4,7 @@ import (
 	"github.com/zclconf/go-cty/cty"
 	"github.com/zclconf/go-cty/cty/function"
 
-	"github.com/wesovilabs-tools/orion/helper"
+	"github.com/wesovilabs/orion/helper"
 )
 
 const (

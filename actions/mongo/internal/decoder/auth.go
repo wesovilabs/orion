@@ -4,9 +4,9 @@ import (
 	"strings"
 
 	"github.com/hashicorp/hcl/v2"
-	mngHelper "github.com/wesovilabs-tools/orion/actions/mongo/internal/helper"
-	"github.com/wesovilabs-tools/orion/helper"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	mngHelper "github.com/wesovilabs/orion/actions/mongo/internal/helper"
+	"github.com/wesovilabs/orion/helper"
+	"github.com/wesovilabs/orion/internal/errors"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 

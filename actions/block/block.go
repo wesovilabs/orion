@@ -3,14 +3,14 @@ package block
 import (
 	"github.com/hashicorp/hcl/v2"
 	log "github.com/sirupsen/logrus"
-	"github.com/wesovilabs-tools/orion/actions"
-	"github.com/wesovilabs-tools/orion/actions/assert"
-	"github.com/wesovilabs-tools/orion/actions/http"
-	"github.com/wesovilabs-tools/orion/actions/mongo"
-	pprint "github.com/wesovilabs-tools/orion/actions/print"
-	"github.com/wesovilabs-tools/orion/actions/set"
-	"github.com/wesovilabs-tools/orion/context"
-	"github.com/wesovilabs-tools/orion/internal/errors"
+	"github.com/wesovilabs/orion/actions"
+	"github.com/wesovilabs/orion/actions/assert"
+	"github.com/wesovilabs/orion/actions/http"
+	"github.com/wesovilabs/orion/actions/mongo"
+	pprint "github.com/wesovilabs/orion/actions/print"
+	"github.com/wesovilabs/orion/actions/set"
+	"github.com/wesovilabs/orion/context"
+	"github.com/wesovilabs/orion/internal/errors"
 )
 
 const (
