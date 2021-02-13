@@ -3,9 +3,8 @@ package helper
 
 import (
 	"github.com/hashicorp/hcl/v2"
-	"github.com/zclconf/go-cty/cty"
-
 	"github.com/wesovilabs/orion/internal/errors"
+	"github.com/zclconf/go-cty/cty"
 )
 
 // GetValueAsBool return the value as a bool.

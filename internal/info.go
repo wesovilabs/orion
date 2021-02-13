@@ -1,5 +1,7 @@
 package internal
 
-var Commit string
-var Version string
-var BuildDate string
+var (
+	Commit    string
+	Version   string
+	BuildDate string
+)

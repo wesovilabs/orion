@@ -15,9 +15,11 @@ const (
 type Filter struct {
 	*BlockProperties
 }
+
 type Set struct {
 	*BlockProperties
 }
+
 type Document struct {
 	*BlockProperties
 }

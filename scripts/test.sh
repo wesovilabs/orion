@@ -2,9 +2,6 @@
 
 TEST_MODE=${TEST_MODE:-unit}
 
-# Remove old report directory
-rm -r test_report
-mkdir -p test_report
 
 # Download dependencies
 go mod download

@@ -16,9 +16,7 @@ const (
 	labelOperation = "operation"
 )
 
-var (
-	supportedOperationsName = helper.MapStructToArray(supportedOperations)
-)
+var supportedOperationsName = helper.MapStructToArray(supportedOperations)
 
 var schemaMongo = &hcl.BodySchema{
 	Attributes: actions.BaseArguments,
@@ -29,10 +27,9 @@ var schemaMongo = &hcl.BodySchema{
 	},
 }
 
-type Decoder struct {
-}
+type Decoder struct{}
 
-// BlockHeaderSchema return the header schema for the plugin
+// BlockHeaderSchema return the header schema for the plugin.
 func (dec *Decoder) BlockHeaderSchema() hcl.BlockHeaderSchema {
 	return hcl.BlockHeaderSchema{
 		Type:       BlockMongo,
@@ -117,7 +114,7 @@ func populateMongoBlocks(mongo *Mongo, blocks hcl.Blocks) errors.Error {
 				return err
 			}
 			mongo.response = &decoder.Response{
-				properties,
+				BlockProperties: properties,
 			}
 		default:
 			return errors.ThrowUnsupportedBlock(BlockMongo, blockType)

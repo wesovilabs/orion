@@ -21,8 +21,8 @@ var (
 	toUppercase = function.New(stringCaseConverter(opToUppercase, strings.ToUpper))
 	trimPrefix  = function.New(stringTrim(opTrimPrefix, strings.TrimPrefix))
 	trimSuffix  = function.New(stringTrim(opTrimSuffix, strings.TrimSuffix))
-	replaceOne  = function.New(stringReplace(opReplaceOne, func(s, old, new string) string {
-		return strings.Replace(s, old, new, 1)
+	replaceOne  = function.New(stringReplace(opReplaceOne, func(s, old, newVal string) string {
+		return strings.Replace(s, old, newVal, 1)
 	}))
 	replaceAll = function.New(stringReplace(opReplaceAll, strings.ReplaceAll))
 )

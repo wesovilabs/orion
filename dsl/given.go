@@ -15,7 +15,7 @@ var schemaGiven = &hcl.BodySchema{
 }
 
 // Given represents the stage in a schemaScenario in which the preconditions
-// must be declared and the data are initialized
+// must be declared and the data are initialized.
 type Given struct {
 	*section
 }

@@ -5,8 +5,6 @@ import (
 	"sync"
 
 	"github.com/mitchellh/go-homedir"
-	"github.com/spf13/viper"
-	"github.com/wesovilabs/orion/internal/errors"
 	"github.com/wesovilabs/orion/internal/logger"
 )
 
@@ -17,9 +15,10 @@ const (
 var (
 	rootDir, _  = homedir.Dir()
 	DefaultPath = filepath.Join(rootDir, baseDir, "orion.yml")
-	v           = viper.New()
-	cfg         *Config
-	once        sync.Once
+	// nolint:godot
+	// v           = viper.New()
+	cfg  *Config
+	once sync.Once
 )
 
 type Config struct {
@@ -52,6 +51,7 @@ func Get() *Config {
 	return cfg
 }
 
+/**
 func read() errors.Error {
 	cfg = &Config{}
 	if err := v.ReadInConfig(); err != nil {
@@ -62,3 +62,4 @@ func read() errors.Error {
 	}
 	return nil
 }
+**/

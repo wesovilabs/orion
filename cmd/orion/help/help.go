@@ -4,11 +4,8 @@ Copyright 2021 The orion Authors.
 package help
 
 import (
-	"fmt"
-	"io"
 	"strings"
 
-	ct "github.com/daviddengcn/go-colortext"
 	"github.com/spf13/cobra"
 )
 
@@ -31,19 +28,20 @@ func New() *cobra.Command {
 	}
 }
 
-// RunHelp checks given arguments and executes command
+// RunHelp checks given arguments and executes command.
 func run(cmd *cobra.Command, args []string) {
-
 	foundCmd, _, err := cmd.Root().Find(args)
-	if foundCmd == nil {
+	switch {
+	case foundCmd == nil:
 		cmd.Printf("Unknown help topic %#q.\n", args)
-		cmd.Root().Usage()
-	} else if err != nil {
-		// print error message at first, since it can contain suggestions
+		if usageErr := cmd.Root().Usage(); usageErr != nil {
+			panic(usageErr)
+		}
+		return
+	case err != nil:
 		cmd.Println(err)
-
 		argsString := strings.Join(args, " ")
-		var matchedMsgIsPrinted = false
+		matchedMsgIsPrinted := false
 		for _, foundCmd := range foundCmd.Commands() {
 			if strings.Contains(foundCmd.Short, argsString) {
 				if !matchedMsgIsPrinted {
@@ -53,28 +51,17 @@ func run(cmd *cobra.Command, args []string) {
 				cmd.Printf("  %-14s %s\n", foundCmd.Name(), foundCmd.Short)
 			}
 		}
-
 		if !matchedMsgIsPrinted {
-			// if nothing is found, just print usage
-			cmd.Root().Usage()
+			if err := cmd.Root().Usage(); err != nil {
+				panic(err)
+			}
 		}
-	} else {
+		return
+	default:
 		if len(args) == 0 {
-			// help message for help command :)
 			foundCmd = cmd
 		}
 		helpFunc := foundCmd.HelpFunc()
 		helpFunc(foundCmd, args)
 	}
-}
-
-func printService(out io.Writer, name, link string) {
-	ct.ChangeColor(ct.Green, false, ct.None, false)
-	fmt.Fprint(out, name)
-	ct.ResetColor()
-	fmt.Fprint(out, " is running at ")
-	ct.ChangeColor(ct.Yellow, false, ct.None, false)
-	fmt.Fprint(out, link)
-	ct.ResetColor()
-	fmt.Fprintln(out, "")
 }

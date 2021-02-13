@@ -50,7 +50,7 @@ case ${BUILD_MODE} in
   docker)
     GOARCH=amd64 GOOS=linux CGO_ENABLED=0 GOFLAGS=-mod=vendor \
       go build -ldflags "${LD_FLAGS}" -o bin/orion.linux ${MODULE}/cmd/orion
-    docker build -f build/docker/Dockerfile -t ${DOCKER_IMG}:local .
+    docker build -f build/docker/Dockerfile -t ${DOCKER_IMG}:${VERSION} .
     echo
     echo "==> Results:"
     ls -hl bin/

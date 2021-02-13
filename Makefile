@@ -13,7 +13,7 @@ lint: ; @ ## Code analysis
 	sh scripts/lint.sh
 
 .PHONY: test
-test: ; test-unit
+test:  test-unit
 
 .PHONY: test-%
 test-%: ; @ ## Run tests

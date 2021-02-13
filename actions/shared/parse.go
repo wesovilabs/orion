@@ -26,10 +26,10 @@ func GetBodyContent(path string, blockName string, labels []string) (*hcl.BodyCo
 	return content, nil
 }
 
-func CreatePos(line, col, byte int) hcl.Pos {
+func CreatePos(line, col, b int) hcl.Pos {
 	return hcl.Pos{
 		Line:   line,
 		Column: col,
-		Byte:   byte,
+		Byte:   b,
 	}
 }

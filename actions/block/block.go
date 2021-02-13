@@ -59,10 +59,8 @@ func (b *Block) populateAttributes(attrs hcl.Attributes) errors.Error {
 }
 
 func (b *Block) populateBlocks(blocks hcl.Blocks) errors.Error {
-
 	for index := range blocks {
 		block := blocks[index]
-
 		dec, ok := decoders[block.Type]
 		if !ok {
 			return errors.ThrowUnsupportedBlock("", block.Type)
@@ -73,7 +71,6 @@ func (b *Block) populateBlocks(blocks hcl.Blocks) errors.Error {
 		}
 		action.SetKind(block.Type)
 		b.actions = append(b.actions, action)
-
 	}
 	return nil
 }
@@ -101,7 +98,7 @@ func (b *Block) Execute(ctx context.FeatureContext) errors.Error {
 // Decoder implement interface Decoder.
 type Decoder struct{}
 
-// BlockHeaderSchema return the header schema for the plugin
+// BlockHeaderSchema return the header schema for the plugin.
 func (dec *Decoder) BlockHeaderSchema() hcl.BlockHeaderSchema {
 	return hcl.BlockHeaderSchema{
 		Type: BlockBlock,

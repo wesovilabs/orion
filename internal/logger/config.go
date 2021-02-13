@@ -4,17 +4,13 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-const (
-	timestampFormat = "15:04:05.000000"
-)
+const timestampFormat = "15:04:05.000000"
 
-var (
-	defaultConfig = &Config{
-		Level: logrus.TraceLevel.String(),
-	}
-)
+var defaultConfig = &Config{
+	Level: logrus.TraceLevel.String(),
+}
 
-// Config contains configuration for logrus
+// Config contains configuration for logrus.
 type Config struct {
 	Level string `yaml:"level"`
 }

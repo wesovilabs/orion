@@ -14,7 +14,7 @@ var schemaThen = &hcl.BodySchema{
 	Attributes: nil,
 }
 
-// Then represents the stage in a schemaScenario in which the assertions take place
+// Then represents the stage in a schemaScenario in which the assertions take place.
 type Then struct {
 	*section
 }

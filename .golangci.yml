@@ -62,6 +62,9 @@ linters-settings:
     # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`;
     # default is false: such cases aren't reported by default.
     check-blank: false
+  funlen:
+    statements: 70
+    lines: 70
   govet:
     # report about shadowed variables
     check-shadowing: true
@@ -77,7 +80,9 @@ linters-settings:
     local-prefixes: orion
   gocyclo:
     # minimal code complexity to report, 30 by default (but we recommend 10-20)
-    min-complexity: 20
+    min-complexity: 25
+  gocognit:
+    min-complexity: 55
   maligned:
     # print struct with more effective memory layout or not, false by default
     suggest-new: true
@@ -123,7 +128,7 @@ linters-settings:
     check-exported: false
   nakedret:
     # make an issue if func has more lines of code than this setting and it has naked returns; default is 30
-    max-func-lines: 30
+    max-func-lines: 50
   prealloc:
     # XXX: we don't recommend using this linter before doing performance profiling.
     # For most programs usage of prealloc will be a premature optimization.
@@ -142,7 +147,10 @@ linters:
   enable-all: true
   disable:
     - wsl
-    - forbidigo
     - gochecknoglobals
     - nlreturn
+    - exhaustivestruct
+    - forbidigo
+    - gci
+    - dupl
   fast: false

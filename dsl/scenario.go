@@ -15,6 +15,8 @@ import (
 	"github.com/wesovilabs/orion/internal/errors"
 )
 
+const minNumberOfSections = 2
+
 var schemaScenario = &hcl.BodySchema{
 	Blocks: []hcl.BlockHeaderSchema{
 		{Type: blockGiven, LabelNames: []string{labelDescription}},
@@ -30,7 +32,7 @@ var schemaScenario = &hcl.BodySchema{
 }
 
 // Scenario represents a single schemaScenario to be tested.
-// A schemaScenario is composed by the Given-Block-Then blocks
+// A schemaScenario is composed by the Given-Block-Then blocks.
 type Scenario struct {
 	description     string
 	sections        Sections
@@ -54,7 +56,7 @@ func (s *Scenario) ContinueOnError(ctx *hcl.EvalContext) bool {
 
 func (s *Scenario) Validate() errors.Error {
 	log.Debugf("It validates the %d sections in the scenario:", len(s.sections))
-	if len(s.sections) < 2 {
+	if len(s.sections) < minNumberOfSections {
 		return errors.IncorrectUsage("A scenario must contains 2 sections at least")
 	}
 	if s.sections[0].Name() == blockThen {
@@ -83,22 +85,8 @@ func (s *Scenario) String() string {
 	return fmt.Sprintf("[scenario] %s ", s.description)
 }
 
-func (s *Scenario) addTag(tag string) {
-	if s.tags == nil {
-		s.tags = make([]string, 0)
-	}
-	s.tags = append(s.tags, tag)
-}
-
 func (s *Scenario) Tags() []string {
 	return s.tags
-}
-
-func (s *Scenario) addSection(section Section) {
-	if s.sections == nil {
-		s.sections = make(Sections, 0)
-	}
-	s.sections = append(s.sections, section)
 }
 
 func (s *Scenario) Sections() Sections {
@@ -125,7 +113,6 @@ func (s *Scenario) Examples(ctx context.FeatureContext) ([]map[string]cty.Value,
 			continue
 		}
 		return nil, errors.IncorrectUsage("unsupported example record")
-
 	}
 	return output, nil
 }
@@ -146,8 +133,6 @@ func (s *Scenario) Execute(ctx context.FeatureContext) errors.Error {
 	}
 	ctx.StopScenario()
 	log.Debug("The s execution was completed successfully.")
-
-	//w.runAfterScenarioHooks(ctx)
 	return nil
 }
 

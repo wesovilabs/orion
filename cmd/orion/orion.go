@@ -7,27 +7,24 @@ import (
 	"github.com/wesovilabs/orion/cmd/orion/run"
 )
 
-const (
-	flagVerbose = "verbose"
-	flagConfig  = "config"
-)
+// const flagConfig  = "config"
 
 var (
-	verbose bool
-	cfgPath string
-	cmd     = command()
+	// cfgPath string.
 	helpCmd = help.New()
 	runCmd  = run.New()
 	lintCmd = lint.New()
 )
 
 func main() {
-	var cmd = command()
-	//common.SetCommonFlags(cmd)
-	//setUpConfig(cmd.OutOrStdout())
+	cmd := command()
+	// common.SetCommonFlags(cmd)
+	// setUpConfig(cmd.OutOrStdout())
 	cmd.SetHelpCommand(helpCmd)
 	cmd.AddCommand(helpCmd, runCmd, lintCmd)
-	cmd.Execute()
+	if err := cmd.Execute(); err != nil {
+		panic(err)
+	}
 }
 
 func command() *cobra.Command {

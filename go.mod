@@ -14,13 +14,13 @@ require (
 	github.com/spf13/cobra v1.1.3
 	github.com/spf13/viper v1.7.1
 	github.com/stretchr/testify v1.6.1
-	github.com/tebeka/go2xunit v1.4.10
 	github.com/zclconf/go-cty v1.7.0
 	go.mongodb.org/mongo-driver v1.4.6
 	go.starlark.net v0.0.0-20210208172022-0a10e4fe7402 // indirect
 	golang.org/x/arch v0.0.0-20210127225635-455c95562d18 // indirect
 	golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c // indirect
 	golang.org/x/tools v0.0.0-20210105210202-9ed45478a130
+	mvdan.cc/gofumpt v0.1.0
 
 )
 

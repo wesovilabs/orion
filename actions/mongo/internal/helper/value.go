@@ -35,8 +35,6 @@ func ToValue(v interface{}) cty.Value {
 	default:
 		return cty.StringVal(fmt.Sprintf("%v", v))
 	}
-
-	return cty.NilVal
 }
 
 func toValueMap(input map[string]interface{}) cty.Value {
