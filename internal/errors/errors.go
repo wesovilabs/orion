@@ -18,6 +18,7 @@ type Error interface {
 	getCode() code
 	ExitStatus() int
 	Error() string
+	Message() string
 }
 
 // Error encapsulates error info.
@@ -54,6 +55,10 @@ func (e *internalError) getCode() code {
 
 func (e *internalError) ExitStatus() int {
 	return e.exitStatus
+}
+
+func (e *internalError) Message() string {
+	return e.msg
 }
 
 // withMessage add the message to the error.

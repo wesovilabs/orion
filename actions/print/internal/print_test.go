@@ -77,5 +77,4 @@ func AssertStdout(t *testing.T, prints []Print, messages []string) {
 		line := lines[index]
 		assert.Equal(t, line, messages[index])
 	}
-
 }

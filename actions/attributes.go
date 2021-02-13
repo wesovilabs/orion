@@ -13,7 +13,7 @@ const (
 	ArgWhile = "while"
 	// ArgCount contains the name of the argument used in the plugins block.
 	ArgCount = "count"
-	// ArgItems contains the name of the slice to be iterated over
+	// ArgItems contains the name of the slice to be iterated over.
 	ArgItems = "items"
 )
 

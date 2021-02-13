@@ -10,8 +10,7 @@ type Decoder interface {
 	Decode(body hcl.Body) (*dsl.Feature, errors.Error)
 }
 
-type decoder struct {
-}
+type decoder struct{}
 
 func (dec *decoder) Decode(body hcl.Body) (*dsl.Feature, errors.Error) {
 	return dsl.DecodeFeature(body)

@@ -20,6 +20,7 @@ const (
 	OpCreate     = "create"
 	OpDrop       = "drop"
 	OpCount      = "count"
+	attrSet      = "$set"
 )
 
 func (exec *executor) find(db *mongo.Database) ([]map[string]interface{}, errors.Error) {
@@ -65,7 +66,7 @@ func (exec *executor) updateMany(db *mongo.Database) errors.Error {
 	collection := db.Collection(exec.collection)
 	log.Debug("mongo updateManu operation")
 	update := bson.D{
-		{"$set", exec.set},
+		bson.E{Key: attrSet, Value: exec.set},
 	}
 	result, err := collection.UpdateMany(ctx, exec.filter, update)
 	if err != nil {
@@ -106,7 +107,7 @@ func (exec *executor) updateOne(db *mongo.Database) errors.Error {
 	collection := db.Collection(exec.collection)
 	log.Debug("mongo updateOne operation")
 	updateMany := bson.D{
-		{"$set", exec.set},
+		bson.E{Key: attrSet, Value: exec.set},
 	}
 	result, err := collection.UpdateOne(ctx, exec.filter, updateMany)
 	if err != nil {

@@ -35,7 +35,7 @@ func SetCommonFlags(cmd *cobra.Command) {
 
 func PreRun(cmd *cobra.Command, args []string) {
 	viper.AutomaticEnv()
-	//cfg := config.Load(cfgPath)
+	// cfg := config.Load(cfgPath)
 	cfg := &config.Config{
 		Logger: logger.Default(),
 	}

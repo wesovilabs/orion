@@ -36,7 +36,7 @@ func (e *executor) Parse(path string) (*dsl.Feature, errors.Error) {
 	return out, nil
 }
 
-// ParseVariables will parse file content into map
+// ParseVariables will parse file content into map.
 func ParseVariables(path string) (map[string]cty.Value, errors.Error) {
 	content, err := ioutil.ReadFile(path)
 	if err != nil {

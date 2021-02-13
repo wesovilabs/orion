@@ -59,7 +59,7 @@ func New() *cobra.Command {
 		&verbose,
 		flagVerbose,
 		"INFO",
-		fmt.Sprintf("log level. Supported values are:  'TRACE', 'DEBUG','INFO','WARN','ERROR'"))
+		"log level. Supported values are:  'TRACE', 'DEBUG','INFO','WARN','ERROR'")
 	return cmd
 }
 

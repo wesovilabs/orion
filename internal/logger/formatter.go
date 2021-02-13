@@ -8,13 +8,13 @@ import (
 )
 
 var levelColors = []ct.Color{
-	ct.Red,     // PANIC
-	ct.Red,     // FATAL
-	ct.Red,     // ERROR
-	ct.Magenta, //WARNING
-	ct.Cyan,    // INFO
-	ct.Green,   // DEBUG
-	ct.Yellow,  // TRACE
+	ct.Red,
+	ct.Red,
+	ct.Red,
+	ct.Magenta,
+	ct.Cyan,
+	ct.Green,
+	ct.Yellow,
 }
 
 type Formatter struct {
@@ -23,7 +23,7 @@ type Formatter struct {
 }
 
 func (f *Formatter) Format(entry *log.Entry) ([]byte, error) {
-	timestamp := fmt.Sprintf(entry.Time.Format(f.TimestampFormat))
+	timestamp := entry.Time.Format(f.TimestampFormat)
 	f.setColor(entry.Level)
 	return []byte(fmt.Sprintf("%s %s\n", timestamp, entry.Message)), nil
 }
@@ -34,5 +34,4 @@ func (f *Formatter) setColor(lvlIndex log.Level) {
 		return
 	}
 	ct.ResetColor()
-
 }

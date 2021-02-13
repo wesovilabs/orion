@@ -11,8 +11,6 @@ import (
 	"github.com/wesovilabs/orion/internal/errors"
 )
 
-const ()
-
 var (
 	defConnectionTimeout = 10 * time.Second
 	defConnectionURI     = "mongodb://localhost:27017"

@@ -126,8 +126,19 @@ func DecodeQuery(block *hcl.Block) (*Query, errors.Error) {
 		return nil, err
 	}
 	query := new(Query)
-	for name := range bodyContent.Attributes {
-		attribute := bodyContent.Attributes[name]
+	if err := decodeQueryAttributes(query, bodyContent.Attributes); err != nil {
+		return nil, err
+	}
+	blocksByType := bodyContent.Blocks.ByType()
+	if err := decodeQueryBlocks(query, blocksByType); err != nil {
+		return nil, err
+	}
+	return query, nil
+}
+
+func decodeQueryAttributes(query *Query, attributes hcl.Attributes) errors.Error {
+	for name := range attributes {
+		attribute := attributes[name]
 		switch attribute.Name {
 		case argDatabase:
 			query.SetDatabase(attribute.Expr)
@@ -136,31 +147,33 @@ func DecodeQuery(block *hcl.Block) (*Query, errors.Error) {
 		case argLimit:
 			query.SetLimit(attribute.Expr)
 		default:
-			return nil, errors.ThrowUnsupportedArgument(BlockQuery, name)
+			return errors.ThrowUnsupportedArgument(BlockQuery, name)
 		}
 	}
-	blocksByType := bodyContent.Blocks.ByType()
-	for blockType, blocks := range blocksByType {
+	return nil
+}
 
+func decodeQueryBlocks(query *Query, blocksByType map[string]hcl.Blocks) errors.Error {
+	for blockType, blocks := range blocksByType {
 		switch blockType {
 		case blockSet:
 			if len(blocks) > 1 {
-				return nil, errors.IncorrectUsage("only 1 block %s is permitted in block %s", blockSet, BlockQuery)
+				return errors.IncorrectUsage("only 1 block %s is permitted in block %s", blockSet, BlockQuery)
 			}
 			blockProps, err := NewBlockProperties(blocks[0])
 			if err != nil {
-				return nil, err
+				return err
 			}
 			query.set = &Set{
 				BlockProperties: blockProps,
 			}
 		case blockFilter:
 			if len(blocks) > 1 {
-				return nil, errors.IncorrectUsage("only 1 block %s is permitted in block %s", blockFilter, BlockQuery)
+				return errors.IncorrectUsage("only 1 block %s is permitted in block %s", blockFilter, BlockQuery)
 			}
 			blockProps, err := NewBlockProperties(blocks[0])
 			if err != nil {
-				return nil, err
+				return err
 			}
 			query.filter = &Filter{
 				BlockProperties: blockProps,
@@ -171,17 +184,15 @@ func DecodeQuery(block *hcl.Block) (*Query, errors.Error) {
 				child := blocks[index]
 				blockProps, err := NewBlockProperties(child)
 				if err != nil {
-					return nil, err
+					return err
 				}
 				query.documents[index] = &Document{
 					BlockProperties: blockProps,
 				}
 			}
 		default:
-			return nil, errors.ThrowUnsupportedBlock(BlockQuery, blockType)
+			return errors.ThrowUnsupportedBlock(BlockQuery, blockType)
 		}
-
 	}
-
-	return query, nil
+	return nil
 }

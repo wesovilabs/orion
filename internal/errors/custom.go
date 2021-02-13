@@ -27,3 +27,7 @@ func ThrowUnsupportedBlocks(block string) Error {
 func ThrowUnsupportedArguments(block string) Error {
 	return IncorrectUsage("arguments are not supported by  %s", block)
 }
+
+func ThrowsExceeddedNumberOfBlocks(block string, max int) Error {
+	return IncorrectUsage("only %d block '%s' is permitted here", max, block)
+}

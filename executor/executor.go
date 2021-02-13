@@ -54,7 +54,9 @@ func (e *executor) Run(envVariables map[string]cty.Value) errors.Error {
 		}
 		e.feature.Join(includeFeature)
 	}
-	e.feature.Vars().To(envVariables)
+	if err := e.feature.Vars().To(envVariables); err != nil {
+		return err
+	}
 
 	for index := range e.feature.Scenarios() {
 		fmt.Println()
@@ -91,7 +93,6 @@ func (e *executor) Run(envVariables map[string]cty.Value) errors.Error {
 		if err := runScenario(ctx, scenario, beforeHooks, afterHooks); err != nil {
 			return err
 		}
-
 	}
 	return nil
 }
@@ -100,7 +101,9 @@ func runScenario(ctx context.FeatureContext, scenario *dsl.Scenario, beforeHooks
 	log.Debug("It starts the execution")
 	printVariables(ctx.EvalContext())
 	if beforeHooks != nil {
-		runHooks(ctx, beforeHooks)
+		if err := runHooks(ctx, beforeHooks); err != nil {
+			return err
+		}
 		printVariables(ctx.EvalContext())
 	}
 	if err := scenario.Execute(ctx); err != nil {
@@ -111,7 +114,9 @@ func runScenario(ctx context.FeatureContext, scenario *dsl.Scenario, beforeHooks
 	}
 	printVariables(ctx.EvalContext())
 	if afterHooks != nil {
-		runHooks(ctx, afterHooks)
+		if err := runHooks(ctx, afterHooks); err != nil {
+			return err
+		}
 		printVariables(ctx.EvalContext())
 	}
 	return nil

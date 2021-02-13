@@ -1,9 +1,9 @@
 package executor
 
 import (
+	"context"
 	"fmt"
 	"io/ioutil"
-	"math"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
@@ -14,10 +14,12 @@ import (
 	"github.com/wesovilabs/orion/internal/errors"
 )
 
+const defTimeoutInSeconds = 10
+
 var httpClient = http.DefaultClient
 
 var DefaultHTTPConnection = &Connection{
-	Timeout: 10 * time.Second,
+	Timeout: defTimeoutInSeconds * time.Second,
 	Proxy:   "",
 }
 
@@ -66,7 +68,8 @@ func (action *HTTP) httpMethod() string {
 }
 
 func (action *HTTP) buildRequest() (*http.Request, errors.Error) {
-	req, err := http.NewRequest(action.httpMethod(), action.URL, strings.NewReader(action.Body))
+	req, err := http.NewRequestWithContext(context.Background(), action.httpMethod(), action.URL,
+		strings.NewReader(action.Body))
 	if err != nil {
 		return nil, errors.Unexpected(err.Error())
 	}
@@ -116,9 +119,6 @@ func (action *HTTP) Execute() (Variables, errors.Error) {
 		vars.SetBody(bodyBytes)
 		vars.SetHeaders(res.Header)
 		vars.SetStatusCode(res.StatusCode)
-		bodyString := string(bodyBytes)
-		bodyStrLen := math.Min(200, float64(len(bodyString)))
-		log.Tracef("%s...", bodyString[:int(bodyStrLen)])
 	}
 	return vars, nil
 }
@@ -131,12 +131,12 @@ func (action *HTTP) setCookies(client *http.Client, url *url.URL) {
 	cookies := make([]*http.Cookie, len(action.Cookies))
 	for i := range action.Cookies {
 		cookie := action.Cookies[i]
-		cookies = append(cookies, &http.Cookie{
+		cookies[i] = &http.Cookie{
 			Name:   cookie.Name,
 			Value:  cookie.Value,
 			Path:   cookie.Path,
 			Domain: cookie.Domain,
-		})
+		}
 	}
 	jar, err := cookiejar.New(nil)
 	if err != nil {
@@ -155,9 +155,9 @@ func (action *HTTP) buildHTTPClient() *http.Client {
 	transport := &http.Transport{}
 	if action.Connection != nil {
 		if action.Connection.Proxy != "" {
-			proxyUrl, _ := url.Parse(action.Connection.Proxy)
-			if proxyUrl != nil {
-				transport.Proxy = http.ProxyURL(proxyUrl)
+			proxyURL, _ := url.Parse(action.Connection.Proxy)
+			if proxyURL != nil {
+				transport.Proxy = http.ProxyURL(proxyURL)
 			}
 		}
 	}

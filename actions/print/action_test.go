@@ -104,7 +104,7 @@ func TestPrint(t *testing.T) {
 }
 
 func TestPrint_Execute(t *testing.T) {
-	var messages = []string{
+	messages := []string{
 		"Hello Mr Robot",
 		"DEBUG Hello Mr Robot",
 		"DEBUG Hello Mr Robot",

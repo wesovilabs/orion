@@ -50,7 +50,6 @@ func EvalAttributeAsSlice(ctx *hcl.EvalContext, attribute *hcl.Attribute) ([]cty
 func EvaluateExpressions(ctx *hcl.EvalContext, expressions map[string]hcl.Expression) errors.Error {
 	pendingExpressions := make(map[string]hcl.Expression)
 	for name, expr := range expressions {
-
 		value, diagnostics := expr.Value(ctx)
 		if diagnostics != nil && diagnostics.HasErrors() {
 			if err := checkExpr(diagnostics, expressions); err != nil {
@@ -70,6 +69,7 @@ func EvaluateExpressions(ctx *hcl.EvalContext, expressions map[string]hcl.Expres
 	return nil
 }
 
+// nolint
 // EvaluateArrayItemExpression evaluate the the list of expressions.
 func EvaluateArrayItemExpression(ctx *hcl.EvalContext, name string, index int, val hcl.Expression) errors.Error {
 	arrayValue := ctx.Variables[name]
@@ -82,36 +82,27 @@ func EvaluateArrayItemExpression(ctx *hcl.EvalContext, name string, index int, v
 		valueSlice = append(valueSlice, cty.EmptyObjectVal)
 	}
 	if IsMap(item) {
-		new := item.AsValueMap()
+		newItem := item.AsValueMap()
 		if len(valueSlice) <= index {
-			item = cty.ObjectVal(new)
+			item = cty.ObjectVal(newItem)
 			valueSlice = append(valueSlice, item)
 			ctx.Variables[name] = cty.ListVal(valueSlice)
 			return nil
-		} else {
-			old := valueSlice[index].AsValueMap()
-			if old != nil {
-				for k, v := range new {
-					old[k] = v
-				}
-				item = cty.ObjectVal(old)
-			} else {
-				item = cty.ObjectVal(new)
-			}
-
 		}
+		old := valueSlice[index].AsValueMap()
+		if old != nil {
+			for k, v := range newItem {
+				old[k] = v
+			}
+			item = cty.ObjectVal(old)
+		} else {
+			item = cty.ObjectVal(newItem)
+		}
+
 	}
 	valueSlice[index] = item
 	ctx.Variables[name] = cty.ListVal(valueSlice)
 	return nil
-}
-
-var sliceRegex = regexp.MustCompile(`.*\[(?P<position>(.*)+)\]`)
-
-type element struct {
-	name     string
-	slice    bool
-	position int
 }
 
 func checkExpr(diagnostics hcl.Diagnostics, expressions map[string]hcl.Expression) errors.Error {

@@ -1,6 +1,7 @@
 package functions
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/zclconf/go-cty/cty"
@@ -18,10 +19,14 @@ func checkArgumentType(operation string, args []cty.Value, types ...cty.Type) er
 	return nil
 }
 
+// nolint:goerr113
 func invalidArgs(name string, args int) error {
-	return fmt.Errorf("function `%s` must retrieve %d arguments", name, args)
+	errMsg := fmt.Sprintf("function `%s` must retrieve %d arguments", name, args)
+	return errors.New(errMsg)
 }
 
+// nolint:goerr113
 func invalidArgType(name string, index int, t string) error {
-	return fmt.Errorf("argument at position %d in function `%s` must be %s", index, name, t)
+	errMsg := fmt.Sprintf("argument at position %d in function `%s` must be %s", index, name, t)
+	return errors.New(errMsg)
 }

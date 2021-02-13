@@ -12,7 +12,7 @@ var schemaWhen = &hcl.BodySchema{
 }
 
 // When represents the stage in a schemaScenario in which we perform the actions
-// or actions to be tested
+// or actions to be tested.
 type When struct {
 	*section
 }
@@ -21,15 +21,15 @@ func decodeWhen(block *hcl.Block) (*When, errors.Error) {
 	when := &When{
 		section: newSection(blockWhen, block),
 	}
-	var err errors.Error
+
 	bodyContent, d := block.Body.Content(schemaWhen)
-	if err = errors.EvalDiagnostics(d); err != nil {
+	if err := errors.EvalDiagnostics(d); err != nil {
 		return nil, err
 	}
 	if err := when.populateAttributes(bodyContent.Attributes); err != nil {
 		return nil, err
 	}
-
+	var err errors.Error
 	if when.actions, err = handler.DecodePlugins(bodyContent.Blocks); err != nil {
 		return nil, err
 	}

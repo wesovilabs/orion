@@ -104,28 +104,36 @@ func populateRequestAttributes(req *Request, attributes hcl.Attributes) errors.E
 
 func populateRequestBlocks(req *Request, blocks hcl.Blocks) errors.Error {
 	blocksByType := blocks.ByType()
-	var err errors.Error
 	for blockType, blockList := range blocksByType {
 		switch blockType {
 		case BlockConnection:
 			if len(blockList) > 1 {
-				// TODO Throw error
+				return errors.ThrowsExceeddedNumberOfBlocks(BlockConnection, 1)
 			}
-			req.connection, err = decodeConnection(blockList[0])
+			connection, err := decodeConnection(blockList[0])
 			if err != nil {
 				return err
 			}
+			req.connection = connection
 		case BlockCookie:
 			req.cookies = make([]*Cookie, len(blockList))
 			for index := range blockList {
-				req.cookies[index], err = decodeCookie(blockList[index])
+				cookie, err := decodeCookie(blockList[index])
+				if err != nil {
+					return err
+				}
+				req.cookies[index] = cookie
 			}
 		case BlockPayload:
 			if len(blockList) > 1 {
-				// TODO Throw error
+				return errors.ThrowsExceeddedNumberOfBlocks(BlockPayload, 1)
 			}
 			for index := range blockList {
-				req.payload, err = decodePayload(blockList[index])
+				payload, err := decodePayload(blockList[index])
+				if err != nil {
+					return err
+				}
+				req.payload = payload
 			}
 		case BlockHeaders:
 			for index := range blockList {
@@ -148,7 +156,7 @@ func populateRequestBlocks(req *Request, blocks hcl.Blocks) errors.Error {
 			return errors.ThrowUnsupportedBlock(BlockHTTP, blockType)
 		}
 	}
-	return err
+	return nil
 }
 
 func decodeConnection(block *hcl.Block) (*Connection, errors.Error) {

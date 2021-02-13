@@ -22,18 +22,6 @@ type Arg struct {
 	def         hcl.Expression
 }
 
-func (a *Arg) SetName(val string) {
-	a.name = val
-}
-
-func (a *Arg) SetDescription(val string) {
-	a.description = val
-}
-
-func (a *Arg) SetDef(val hcl.Expression) {
-	a.def = val
-}
-
 func (a *Arg) Execute(ctx context.FeatureContext) errors.Error {
 	if _, ok := ctx.EvalContext().Variables[a.name]; !ok {
 		if a.def == nil {
@@ -48,7 +36,7 @@ func (a *Arg) Execute(ctx context.FeatureContext) errors.Error {
 	return nil
 }
 
-// DecodeArg decode bock arg
+// DecodeArg decode bock arg.
 func DecodeArg(b *hcl.Block) (*Arg, errors.Error) {
 	arg := new(Arg)
 	arg.name = b.Labels[0]
@@ -73,8 +61,6 @@ func (a *Arg) populateArgAttributes(attrs hcl.Attributes) errors.Error {
 			if err != nil {
 				return err
 			}
-		default:
-			return errors.ThrowUnsupportedArgument(blockScenario, name)
 		}
 	}
 

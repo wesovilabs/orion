@@ -21,71 +21,73 @@ func createPos(line, col, byte int) hcl.Pos {
 	}
 }
 
-var inputPath = path.Join(featuresDir, scenario3)
-var blocks = []*Print{
-	{
-		prefix: &hclsyntax.TemplateExpr{
-			SrcRange: hcl.Range{
-				Filename: inputPath,
-				Start:    createPos(3, 3, 41),
-				End:      createPos(3, 23, 61),
+var (
+	inputPath = path.Join(featuresDir, scenario3)
+	blocks    = []*Print{
+		{
+			prefix: &hclsyntax.TemplateExpr{
+				SrcRange: hcl.Range{
+					Filename: inputPath,
+					Start:    createPos(3, 3, 41),
+					End:      createPos(3, 23, 61),
+				},
+			},
+			msg: &hclsyntax.TemplateExpr{
+				SrcRange: hcl.Range{
+					Filename: inputPath,
+					Start:    createPos(2, 3, 10),
+					End:      createPos(2, 31, 38),
+				},
 			},
 		},
-		msg: &hclsyntax.TemplateExpr{
-			SrcRange: hcl.Range{
-				Filename: inputPath,
-				Start:    createPos(2, 3, 10),
-				End:      createPos(2, 31, 38),
+		{
+			msg: &hclsyntax.TemplateExpr{
+				SrcRange: hcl.Range{
+					Filename: inputPath,
+					Start:    createPos(7, 3, 75),
+					End:      createPos(7, 31, 103),
+				},
 			},
 		},
-	},
-	{
-		msg: &hclsyntax.TemplateExpr{
-			SrcRange: hcl.Range{
-				Filename: inputPath,
-				Start:    createPos(7, 3, 75),
-				End:      createPos(7, 31, 103),
+		{
+			prefix: &hclsyntax.TemplateExpr{
+				SrcRange: hcl.Range{
+					Filename: inputPath,
+					Start:    createPos(11, 3, 117),
+					End:      createPos(11, 23, 137),
+				},
+			},
+			msg: &hclsyntax.TemplateExpr{
+				SrcRange: hcl.Range{
+					Filename: inputPath,
+					Start:    createPos(12, 3, 140),
+					End:      createPos(12, 31, 168),
+				},
+			},
+			timestamp: &hclsyntax.TemplateExpr{
+				SrcRange: hcl.Range{
+					Filename: inputPath,
+					Start:    createPos(13, 3, 171),
+					End:      createPos(13, 21, 189),
+				},
+			},
+			timestampFormat: &hclsyntax.TemplateExpr{
+				SrcRange: hcl.Range{
+					Filename: inputPath,
+					Start:    createPos(14, 3, 192),
+					End:      createPos(14, 33, 222),
+				},
+			},
+			format: &hclsyntax.TemplateExpr{
+				SrcRange: hcl.Range{
+					Filename: inputPath,
+					Start:    createPos(15, 3, 225),
+					End:      createPos(15, 18, 240),
+				},
 			},
 		},
-	},
-	{
-		prefix: &hclsyntax.TemplateExpr{
-			SrcRange: hcl.Range{
-				Filename: inputPath,
-				Start:    createPos(11, 3, 117),
-				End:      createPos(11, 23, 137),
-			},
-		},
-		msg: &hclsyntax.TemplateExpr{
-			SrcRange: hcl.Range{
-				Filename: inputPath,
-				Start:    createPos(12, 3, 140),
-				End:      createPos(12, 31, 168),
-			},
-		},
-		timestamp: &hclsyntax.TemplateExpr{
-			SrcRange: hcl.Range{
-				Filename: inputPath,
-				Start:    createPos(13, 3, 171),
-				End:      createPos(13, 21, 189),
-			},
-		},
-		timestampFormat: &hclsyntax.TemplateExpr{
-			SrcRange: hcl.Range{
-				Filename: inputPath,
-				Start:    createPos(14, 3, 192),
-				End:      createPos(14, 33, 222),
-			},
-		},
-		format: &hclsyntax.TemplateExpr{
-			SrcRange: hcl.Range{
-				Filename: inputPath,
-				Start:    createPos(15, 3, 225),
-				End:      createPos(15, 18, 240),
-			},
-		},
-	},
-}
+	}
+)
 
 func TestDecoder_DecodeBlock(t *testing.T) {
 	content, err := shared.GetBodyContent(inputPath, BlockPrint, []string{})

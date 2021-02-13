@@ -17,22 +17,18 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-type operation string
-
-var (
-	supportedOperations = map[string]struct{}{
-		executor.OpDrop:       {},
-		executor.OpCreate:     {},
-		executor.OpFindOne:    {},
-		executor.OpFind:       {},
-		executor.OpDeleteOne:  {},
-		executor.OpDeleteMany: {},
-		executor.OpUpdateOne:  {},
-		executor.OpUpdateMany: {},
-		executor.OpInsertOne:  {},
-		executor.OpInsertMany: {},
-	}
-)
+var supportedOperations = map[string]struct{}{
+	executor.OpDrop:       {},
+	executor.OpCreate:     {},
+	executor.OpFindOne:    {},
+	executor.OpFind:       {},
+	executor.OpDeleteOne:  {},
+	executor.OpDeleteMany: {},
+	executor.OpUpdateOne:  {},
+	executor.OpUpdateMany: {},
+	executor.OpInsertOne:  {},
+	executor.OpInsertMany: {},
+}
 
 type Mongo struct {
 	*actions.Base
@@ -59,7 +55,9 @@ func (m *Mongo) CreteContext(evalCtx *hcl.EvalContext) context.Context {
 		log.Warn("it fails silently obtaining the timeout.")
 	}
 	if timeout != nil {
+		// nolint
 		ctx, _ := context.WithTimeout(context.Background(), *timeout)
+		// cancelFn()
 		return ctx
 	}
 	return context.Background()
@@ -84,7 +82,6 @@ func (m *Mongo) Operation() string {
 }
 
 func (m *Mongo) Execute(ctx orionContext.FeatureContext) errors.Error {
-
 	mngCtx := m.CreteContext(ctx.EvalContext())
 	clientOptions, err := m.conn.ClientOpts(ctx.EvalContext())
 	if err != nil {

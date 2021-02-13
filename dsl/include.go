@@ -51,7 +51,7 @@ func includesFromValue(attr *hcl.Attribute) (Includes, errors.Error) {
 		case strings.HasPrefix(path, filePath):
 			include = &Include{
 				kind: fileType,
-				path: strings.TrimLeft(path, filePath),
+				path: strings.TrimPrefix(path, filePath),
 			}
 		default:
 			include = &Include{

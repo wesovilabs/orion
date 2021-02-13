@@ -51,7 +51,7 @@ func decodeFunc(block *hcl.Block) (*Func, errors.Error) {
 			}
 		case blockBody:
 			if len(blocks) > 1 {
-				return nil, errors.IncorrectUsage("only one block '%s' is permitted", blockBody)
+				return nil, errors.ThrowsExceeddedNumberOfBlocks(blockBody, 1)
 			}
 			if len(blocks) == 1 {
 				if function.body, err = decodeBody(blocks[0]); err != nil {
@@ -60,7 +60,7 @@ func decodeFunc(block *hcl.Block) (*Func, errors.Error) {
 			}
 		case blockReturn:
 			if len(blocks) > 1 {
-				return nil, errors.IncorrectUsage("only one block '%s' is permitted", blockReturn)
+				return nil, errors.ThrowsExceeddedNumberOfBlocks(blockReturn, 1)
 			}
 			if len(blocks) == 1 {
 				if function.ret, err = decodeReturn(blocks[0]); err != nil {
@@ -70,7 +70,6 @@ func decodeFunc(block *hcl.Block) (*Func, errors.Error) {
 		default:
 			return nil, errors.ThrowUnsupportedBlock(blockFunc, name)
 		}
-
 	}
 	return function, nil
 }

@@ -9,8 +9,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func New(ctx context.Context, operation string, database, collection string, opts *options.ClientOptions) (Executor, errors.Error) {
-
+func New(ctx context.Context, operation string, database, collection string,
+	opts *options.ClientOptions) (Executor, errors.Error) {
 	return &executor{
 		operation:  operation,
 		ctx:        ctx,
@@ -48,6 +48,7 @@ func (exec *executor) WithFindList(limit int) Executor {
 	exec.findList = &findList{limit: limit}
 	return exec
 }
+
 func (exec *executor) WithFilter(filter map[string]interface{}) Executor {
 	exec.filter = filter
 	return exec
@@ -75,12 +76,15 @@ func (exec *executor) Run() (*MongoResponse, errors.Error) {
 	if mngErr != nil {
 		return nil, errors.Unexpected(mngErr.Error())
 	}
-	defer client.Disconnect(ctx)
+	defer func() {
+		if err := client.Disconnect(ctx); err != nil {
+			log.Warning(err.Error())
+		}
+	}()
 
 	if mngErr := client.Ping(ctx, nil); mngErr != nil {
 		return nil, errors.Unexpected(mngErr.Error())
 	}
-
 	db := client.Database(exec.dbName)
 	log.Debugf("connected to database %s", exec.dbName)
 	switch op := exec.operation; op {
@@ -122,5 +126,4 @@ func (exec *executor) Run() (*MongoResponse, errors.Error) {
 		return nil, errors.IncorrectUsage(
 			"unsupported operation '%s'.", op)
 	}
-	return nil, nil
 }

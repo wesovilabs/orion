@@ -47,30 +47,20 @@ func (dec *Decoder) BlockHeaderSchema() hcl.BlockHeaderSchema {
 // DecodeBlock required to implement the plugin interface.
 func (dec *Decoder) DecodeBlock(block *hcl.Block) (actions.Action, errors.Error) {
 	bodyContent, body, d := block.Body.PartialContent(schemaPrint)
-
 	if err := errors.EvalDiagnostics(d); err != nil {
 		return nil, err
 	}
-
 	attributes, d := body.JustAttributes()
-
 	if err := errors.EvalDiagnostics(d); err != nil {
 		return nil, err
 	}
 	p := &Print{Base: &actions.Base{}}
-
 	if err := populateAttributes(p, attributes); err != nil {
 		return nil, err
 	}
-
 	if err := populateAttributes(p, bodyContent.Attributes); err != nil {
 		return nil, err
 	}
-
-	if len(block.Labels) != 1 {
-		return nil, errors.ThrowMissingRequiredLabel(BlockPrint)
-	}
-
 	return p, nil
 }
 

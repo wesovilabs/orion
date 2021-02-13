@@ -36,7 +36,6 @@ var assertDecoderBlocks = []*Assert{
 }
 
 func TestDecoder_DecodeBlock(t *testing.T) {
-
 	content, err := shared.GetBodyContent(assertDecoderPath, BlockAssert, []string{})
 	assert.Nil(t, err)
 	assert.NotNil(t, content)

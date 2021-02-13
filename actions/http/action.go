@@ -38,29 +38,29 @@ func (h *HTTP) SetResponse(res *decoder.Response) {
 	h.response = res
 }
 
-func (p *HTTP) Execute(ctx context.FeatureContext) errors.Error {
+func (h *HTTP) Execute(ctx context.FeatureContext) errors.Error {
 	evalCtx := ctx.EvalContext()
 	var err errors.Error
 	var baseURL, path string
 	executor := new(executor.HTTP)
-	if baseURL, err = p.request.BaseURL(evalCtx); err != nil {
+	if baseURL, err = h.request.BaseURL(evalCtx); err != nil {
 		return err
 	}
-	if path, err = p.request.Path(evalCtx); err != nil {
+	if path, err = h.request.Path(evalCtx); err != nil {
 		return err
 	}
 	executor.URL = fmt.Sprintf("%s%s", baseURL, path)
-	executor.Method = p.Method()
-	if executor.Headers, err = p.request.Headers(evalCtx); err != nil {
+	executor.Method = h.Method()
+	if executor.Headers, err = h.request.Headers(evalCtx); err != nil {
 		return err
 	}
-	if executor.QueryParams, err = p.request.QueryParams(evalCtx); err != nil {
+	if executor.QueryParams, err = h.request.QueryParams(evalCtx); err != nil {
 		return err
 	}
-	if executor.Connection, err = p.request.Connection(evalCtx); err != nil {
+	if executor.Connection, err = h.request.Connection(evalCtx); err != nil {
 		return err
 	}
-	if executor.Cookies, err = p.request.Cookies(evalCtx); err != nil {
+	if executor.Cookies, err = h.request.Cookies(evalCtx); err != nil {
 		return err
 	}
 
@@ -71,7 +71,7 @@ func (p *HTTP) Execute(ctx context.FeatureContext) errors.Error {
 		return err
 	}
 	vars.SetToContext(evalCtx)
-	if err := helper.EvaluateExpressions(evalCtx, p.response.Values()); err != nil {
+	if err := helper.EvaluateExpressions(evalCtx, h.response.Values()); err != nil {
 		return err
 	}
 	cleanVariables(evalCtx)

@@ -4,11 +4,19 @@ go:
   - 1.15.x
 
 script:
-  - make test-coverage
   - make lint
+  - make test-unit
+  - make build
+  - make build-docker
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  provider: script
+  script: bash scripts/publish-dcoker.sh
+  on:
+    branch: master
 
 notifications:
   email:

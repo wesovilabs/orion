@@ -24,7 +24,7 @@ var schemaHTTP = &hcl.BodySchema{
 
 type Decoder struct{}
 
-// BlockHeaderSchema return the header schema for the plugin
+// BlockHeaderSchema return the header schema for the plugin.
 func (dec *Decoder) BlockHeaderSchema() hcl.BlockHeaderSchema {
 	return hcl.BlockHeaderSchema{
 		Type:       BlockHTTP,
@@ -69,7 +69,7 @@ func populateBlocks(http *HTTP, blocks hcl.Blocks) errors.Error {
 		switch {
 		case blockType == BlockRequest:
 			if len(blockList) > 1 {
-				// throw error
+				return errors.ThrowsExceeddedNumberOfBlocks(BlockRequest, 1)
 			}
 			req, err := decoder.DecodeRequest(blockList[0])
 			if err != nil {
@@ -78,7 +78,7 @@ func populateBlocks(http *HTTP, blocks hcl.Blocks) errors.Error {
 			http.SetRequest(req)
 		case blockType == BlockResponse:
 			if len(blockList) > 1 {
-				// throw error
+				return errors.ThrowsExceeddedNumberOfBlocks(BlockResponse, 1)
 			}
 			res, err := decoder.DecodeResponse(blockList[0])
 			if err != nil {
