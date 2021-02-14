@@ -19,7 +19,7 @@ func TestAssert_Assertion(t *testing.T) {
 	content, err := shared.GetBodyContent(path.Join("testdata", "assert-evaluation.hcl"), BlockAssert, []string{})
 	assert.Nil(t, err)
 	assert.NotNil(t, content)
-	ctx := context.NewFeatureContext(map[string]cty.Value{
+	ctx := context.New(map[string]cty.Value{
 		"person": cty.ObjectVal(map[string]cty.Value{
 			"lastname": cty.StringVal("Robot"),
 			"age":      cty.NumberIntVal(int64(20)),

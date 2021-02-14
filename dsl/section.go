@@ -23,7 +23,7 @@ type Section interface {
 	Name() string
 	String() string
 	SetName(name string)
-	executeActions(ctx context.FeatureContext) errors.Error
+	executeActions(ctx context.OrionContext) errors.Error
 	TotalActions() int
 }
 
@@ -84,7 +84,7 @@ func (s *section) populateActions(blocks hcl.Blocks) errors.Error {
 	return nil
 }
 
-func (s *section) executeActions(ctx context.FeatureContext) errors.Error {
+func (s *section) executeActions(ctx context.OrionContext) errors.Error {
 	if len(s.actions) == 0 {
 		return errors.IncorrectUsage("block '%s' cannot be empty. It must contain one action at least", s.name)
 	}

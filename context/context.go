@@ -6,8 +6,8 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
-// FeatureContext context used during the feature execution.
-type FeatureContext interface {
+// OrionContext context used during the feature execution.
+type OrionContext interface {
 	StartScenario()
 	FailScenario()
 	StopScenario()
@@ -15,14 +15,14 @@ type FeatureContext interface {
 	Variables() Variables
 }
 
-// NewFeatureContext returns a initialization of interface FeatureContext.
-func NewFeatureContext(variables map[string]cty.Value) FeatureContext {
+// New returns a initialization of interface OrionContext.
+func New(variables map[string]cty.Value) OrionContext {
 	vars := make(map[string]cty.Value)
 	for name, value := range variables {
 		vars[name] = value
 	}
 
-	return &featureContext{
+	return &orionContext{
 		ctx: &hcl.EvalContext{
 			Functions: functions.Functions,
 			Variables: vars,
@@ -31,38 +31,38 @@ func NewFeatureContext(variables map[string]cty.Value) FeatureContext {
 	}
 }
 
-type featureContext struct {
+type orionContext struct {
 	ctx       *hcl.EvalContext
 	variables Variables
-	metrics   metric
+	metrics   *scenarioMetrics
 }
 
 // StartScenario starts the scenario.
-func (c *featureContext) StartScenario() {
+func (c *orionContext) StartScenario() {
 	c.metrics = newScenarioMetrics()
 }
 
 // CompleteScenario completes the scenario.
-func (c *featureContext) CompleteScenario() {
+func (c *orionContext) CompleteScenario() {
 	c.metrics.stopScenario()
 }
 
 // Variables return set of variables.
-func (c *featureContext) Variables() Variables {
+func (c *orionContext) Variables() Variables {
 	return c.variables
 }
 
 // FailScenario scenario failed.
-func (c *featureContext) FailScenario() {
+func (c *orionContext) FailScenario() {
 	c.metrics.stopScenario()
 }
 
 // StopScenario scenario stopped.
-func (c *featureContext) StopScenario() {
+func (c *orionContext) StopScenario() {
 	c.metrics.stopScenario()
 }
 
 // EvalContext return the hcl eval context.
-func (c *featureContext) EvalContext() *hcl.EvalContext {
+func (c *orionContext) EvalContext() *hcl.EvalContext {
 	return c.ctx
 }

@@ -80,7 +80,7 @@ func (feature *Feature) Vars() Vars {
 	return feature.vars
 }
 
-func (feature *Feature) LoadVariables(ctx context.FeatureContext) errors.Error {
+func (feature *Feature) LoadVariables(ctx context.OrionContext) errors.Error {
 	if feature.input != nil && feature.input.args != nil {
 		return feature.input.Execute(ctx)
 	}

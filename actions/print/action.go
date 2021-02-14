@@ -84,8 +84,8 @@ func (p *Print) Format(ctx *hcl.EvalContext) (string, errors.Error) {
 }
 
 // Execute functin in charge of executing the plugin.
-func (p *Print) Execute(ctx context.FeatureContext) errors.Error {
-	return actions.Execute(ctx, p.Base, func(ctx context.FeatureContext) errors.Error {
+func (p *Print) Execute(ctx context.OrionContext) errors.Error {
+	return actions.Execute(ctx, p.Base, func(ctx context.OrionContext) errors.Error {
 		evalCtx := ctx.EvalContext()
 		var err errors.Error
 		action := &internal.Print{}

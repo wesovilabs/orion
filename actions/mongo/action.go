@@ -63,7 +63,7 @@ func (m *Mongo) CreteContext(evalCtx *hcl.EvalContext) context.Context {
 	return context.Background()
 }
 
-func (m *Mongo) Filter(ctx orionContext.FeatureContext) (map[string]interface{}, errors.Error) {
+func (m *Mongo) Filter(ctx orionContext.OrionContext) (map[string]interface{}, errors.Error) {
 	filter, err := m.query.Filter(ctx.EvalContext())
 	out := bson.M{}
 	for k, v := range filter {
@@ -81,7 +81,7 @@ func (m *Mongo) Operation() string {
 	return m.operation
 }
 
-func (m *Mongo) Execute(ctx orionContext.FeatureContext) errors.Error {
+func (m *Mongo) Execute(ctx orionContext.OrionContext) errors.Error {
 	mngCtx := m.CreteContext(ctx.EvalContext())
 	clientOptions, err := m.conn.ClientOpts(ctx.EvalContext())
 	if err != nil {
