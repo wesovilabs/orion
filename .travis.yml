@@ -19,17 +19,14 @@ deploy:
     script: make build-docker
     on:
       tag: true
-      branch: master
   - provider: script
     script: bash scripts/publish-docker.sh
     on:
       tag: true
-      branch: master
   - provider: script
     script: make build-release
     on:
       tag: true
-      branch: master
   - provider: releases
     api_key:
       secure: $GITHUB_OAUTH_TOKEN
@@ -41,7 +38,13 @@ deploy:
     draft: true
     on:
       tags: true
-      branch: master
+branches:
+  only:
+    # Pushes and PR to the master branch
+    - master
+    # Ruby regex to match tags. Required, or travis won't trigger deploys when
+    # a new tag is pushed. Version tags should be of the form: v0.1.0
+    - /^v\d+\.\d+\.\d+.*$/
 
 notifications:
   email:
