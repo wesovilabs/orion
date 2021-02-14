@@ -10,20 +10,41 @@ script:
   - make lint
   - make test-unit
   - make build
-  - make build-docker
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
-
 deploy:
-  provider: script
-  script: bash scripts/publish-docker.sh
-  on:
-    all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^(develop|master)$
+  - provider: script
+    script: make build-docker
+    on:
+      tag: true
+      branch: master
+  - provider: script
+    script: bash scripts/publish-docker.sh
+    on:
+      tag: true
+      branch: master
+  - provider: script
+    script: make build-release
+    on:
+      tag: true
+      branch: master
+  - provider: releases
+    api_key:
+      secure: $GITHUB_OAUTH_TOKEN
+    file:
+      - bin/orion.exe
+      - bin/orion.darwin
+      - bin/orion.linux
+    skip_cleanup: true
+    draft: true
+    on:
+      tags: true
+      branch: master
 
 notifications:
   email:
     on_success: change
     on_failure: always
+
