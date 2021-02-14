@@ -60,7 +60,7 @@ func (e *executor) Run(envVariables map[string]cty.Value) errors.Error {
 
 	for index := range e.feature.Scenarios() {
 		fmt.Println()
-		ctx := context.NewFeatureContext(envVariables)
+		ctx := context.New(envVariables)
 		if err := e.feature.LoadVariables(ctx); err != nil {
 			return err
 		}
@@ -97,7 +97,7 @@ func (e *executor) Run(envVariables map[string]cty.Value) errors.Error {
 	return nil
 }
 
-func runScenario(ctx context.FeatureContext, scenario *dsl.Scenario, beforeHooks, afterHooks []*dsl.Hook) errors.Error {
+func runScenario(ctx context.OrionContext, scenario *dsl.Scenario, beforeHooks, afterHooks []*dsl.Hook) errors.Error {
 	log.Debug("It starts the execution")
 	printVariables(ctx.EvalContext())
 	if beforeHooks != nil {
@@ -122,7 +122,7 @@ func runScenario(ctx context.FeatureContext, scenario *dsl.Scenario, beforeHooks
 	return nil
 }
 
-func runHooks(ctx context.FeatureContext, hooks []*dsl.Hook) errors.Error {
+func runHooks(ctx context.OrionContext, hooks []*dsl.Hook) errors.Error {
 	for index := range hooks {
 		hook := hooks[index]
 		log.Info(hook)

@@ -38,7 +38,7 @@ func (h *HTTP) SetResponse(res *decoder.Response) {
 	h.response = res
 }
 
-func (h *HTTP) Execute(ctx context.FeatureContext) errors.Error {
+func (h *HTTP) Execute(ctx context.OrionContext) errors.Error {
 	evalCtx := ctx.EvalContext()
 	var err errors.Error
 	var baseURL, path string

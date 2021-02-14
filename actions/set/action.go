@@ -38,7 +38,7 @@ func (set *Set) populateAttributes(attrs hcl.Attributes) errors.Error {
 }
 
 // Execute method to run the plugin.
-func (set *Set) Execute(ctx context.FeatureContext) errors.Error {
+func (set *Set) Execute(ctx context.OrionContext) errors.Error {
 	log.Debugf("[%s] It sets value for variable %s", BlockSet, set.name)
 	key := set.name
 	if set.index != nil {

@@ -93,7 +93,7 @@ func (s *Scenario) Sections() Sections {
 	return s.sections
 }
 
-func (s *Scenario) Examples(ctx context.FeatureContext) ([]map[string]cty.Value, errors.Error) {
+func (s *Scenario) Examples(ctx context.OrionContext) ([]map[string]cty.Value, errors.Error) {
 	if s.examples == nil {
 		return nil, nil
 	}
@@ -117,7 +117,7 @@ func (s *Scenario) Examples(ctx context.FeatureContext) ([]map[string]cty.Value,
 	return output, nil
 }
 
-func (s *Scenario) Execute(ctx context.FeatureContext) errors.Error {
+func (s *Scenario) Execute(ctx context.OrionContext) errors.Error {
 	ctx.StartScenario()
 	if err := s.Validate(); err != nil {
 		return err

@@ -44,7 +44,7 @@ func (h *Hook) String() string {
 	return fmt.Sprintf("[%s|%s]: %s", h.tag, h.kind, h.description)
 }
 
-func (h *Hook) Execute(ctx context.FeatureContext) errors.Error {
+func (h *Hook) Execute(ctx context.OrionContext) errors.Error {
 	for index := range h.actions {
 		action := h.actions[index]
 		if err := action.Execute(ctx); err != nil {

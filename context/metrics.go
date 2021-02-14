@@ -6,13 +6,9 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-type metric interface {
-	stopScenario()
-}
-
 type scenarioMetrics struct {
 	startTime time.Time
-	endTime   time.Time
+	endTime   *time.Time
 }
 
 func (m *scenarioMetrics) duration() time.Duration {
@@ -26,6 +22,7 @@ func newScenarioMetrics() *scenarioMetrics {
 }
 
 func (m *scenarioMetrics) stopScenario() {
-	m.endTime = time.Now()
+	endtime:=time.Now()
+	m.endTime = &endtime
 	log.Infof("The scenario took %s.", m.duration().String())
 }

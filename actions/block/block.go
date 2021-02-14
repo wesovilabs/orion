@@ -76,11 +76,11 @@ func (b *Block) populateBlocks(blocks hcl.Blocks) errors.Error {
 }
 
 // Execute method to run the plugin.
-func (b *Block) Execute(ctx context.FeatureContext) errors.Error {
+func (b *Block) Execute(ctx context.OrionContext) errors.Error {
 	if len(b.actions) == 0 {
 		return errors.IncorrectUsage("block '%s' cannot be empty. It must contain one action at least", BlockBlock)
 	}
-	return actions.Execute(ctx, b.Base, func(ctx context.FeatureContext) errors.Error {
+	return actions.Execute(ctx, b.Base, func(ctx context.OrionContext) errors.Error {
 		for index := range b.actions {
 			action := b.actions[index]
 			if action.ShouldExecute(ctx.EvalContext()) {

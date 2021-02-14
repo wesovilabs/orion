@@ -30,8 +30,8 @@ func (a *Assert) Assertion() hcl.Expression {
 }
 
 // Execute execute the assert plugin.
-func (a *Assert) Execute(ctx context.FeatureContext) errors.Error {
-	return actions.Execute(ctx, a.Base, func(ctx context.FeatureContext) errors.Error {
+func (a *Assert) Execute(ctx context.OrionContext) errors.Error {
+	return actions.Execute(ctx, a.Base, func(ctx context.OrionContext) errors.Error {
 		assertion, err := helper.GetExpressionValueAsBool(ctx.EvalContext(), a.assertion, defaultAssertion)
 		if err != nil {
 			return err

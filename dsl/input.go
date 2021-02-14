@@ -31,7 +31,7 @@ func (i *Input) AddArg(arg *Arg) {
 	i.args = append(i.args, arg)
 }
 
-func (i *Input) Execute(ctx context.FeatureContext) errors.Error {
+func (i *Input) Execute(ctx context.OrionContext) errors.Error {
 	if len(i.args) == 0 {
 		return errors.IncorrectUsage("'%s'  only can be declared if it contains one or more block '%s'", blockInput, blockArg)
 	}

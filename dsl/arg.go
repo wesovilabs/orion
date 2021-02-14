@@ -22,7 +22,7 @@ type Arg struct {
 	def         hcl.Expression
 }
 
-func (a *Arg) Execute(ctx context.FeatureContext) errors.Error {
+func (a *Arg) Execute(ctx context.OrionContext) errors.Error {
 	if _, ok := ctx.EvalContext().Variables[a.name]; !ok {
 		if a.def == nil {
 			return errors.IncorrectUsage("variable %s must be provided", a.name)

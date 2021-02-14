@@ -7,10 +7,10 @@ import (
 )
 
 // ExecuteFn defined type to be implemented by the plugins.
-type ExecuteFn func(ctx context.FeatureContext) errors.Error
+type ExecuteFn func(ctx context.OrionContext) errors.Error
 
 // Execute Given a plugin and the context is executed.
-func Execute(ctx context.FeatureContext, action *Base, fn ExecuteFn) errors.Error {
+func Execute(ctx context.OrionContext, action *Base, fn ExecuteFn) errors.Error {
 	// ctx.StartAction()
 	evalCtx := ctx.EvalContext()
 	when, err := helper.GetExpressionValueAsBool(evalCtx, action.when, true)
@@ -29,7 +29,7 @@ func Execute(ctx context.FeatureContext, action *Base, fn ExecuteFn) errors.Erro
 	return fn(ctx)
 }
 
-func doWhile(ctx context.FeatureContext, plugin *Base, fn ExecuteFn) errors.Error {
+func doWhile(ctx context.OrionContext, plugin *Base, fn ExecuteFn) errors.Error {
 	evalCtx := ctx.EvalContext()
 	index := 0
 	for {
@@ -45,7 +45,7 @@ func doWhile(ctx context.FeatureContext, plugin *Base, fn ExecuteFn) errors.Erro
 	}
 }
 
-func doCount(ctx context.FeatureContext, plugin *Base, fn ExecuteFn) errors.Error {
+func doCount(ctx context.OrionContext, plugin *Base, fn ExecuteFn) errors.Error {
 	evalCtx := ctx.EvalContext()
 	count, err := helper.GetExpressionValueAsInt(evalCtx, plugin.count, 1)
 	if err != nil {

@@ -23,7 +23,7 @@ type Action interface {
 	Description() string
 	String() string
 	ShouldExecute(ctx *hcl.EvalContext) bool
-	Execute(ctx context.FeatureContext) errors.Error
+	Execute(ctx context.OrionContext) errors.Error
 }
 
 // Base contain the common attributes of all the plugins.

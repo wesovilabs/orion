@@ -44,7 +44,7 @@ var expectedArgs = map[string]struct {
 	},
 }
 
-var orionCtx = context.NewFeatureContext(map[string]cty.Value{
+var orionCtx = context.New(map[string]cty.Value{
 	"elements": cty.ListVal([]cty.Value{
 		cty.StringVal("d"), cty.StringVal("e"), cty.StringVal("f"),
 	}),
