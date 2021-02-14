@@ -27,6 +27,9 @@ func (v *variables) SetIndex(index int) {
 
 // SetToContext set the variables into the context.
 func (v *variables) SetToContext(ctx *hcl.EvalContext) {
+	if ctx.Variables == nil {
+		ctx.Variables = make(map[string]cty.Value)
+	}
 	ctx.Variables["_"] = cty.MapVal(map[string]cty.Value{
 		"index": cty.NumberIntVal(int64(v.index)),
 	})
