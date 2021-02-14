@@ -22,7 +22,7 @@ func newScenarioMetrics() *scenarioMetrics {
 }
 
 func (m *scenarioMetrics) stopScenario() {
-	endtime:=time.Now()
+	endtime := time.Now()
 	m.endTime = &endtime
 	log.Infof("The scenario took %s.", m.duration().String())
 }
