@@ -14,7 +14,7 @@ after_success:
 
 deploy:
   provider: script
-  script: bash scripts/publish-dcoker.sh
+  script: bash scripts/publish-docker.sh
   on:
     branch: master
 
