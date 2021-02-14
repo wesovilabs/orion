@@ -18,15 +18,15 @@ deploy:
   - provider: script
     script: make build-docker
     on:
-      tag: true
+      tags: true
   - provider: script
     script: bash scripts/publish-docker.sh
     on:
-      tag: true
+      tags: true
   - provider: script
     script: make build-release
     on:
-      tag: true
+      tags: true
   - provider: releases
     api_key:
       secure: $GITHUB_OAUTH_TOKEN
