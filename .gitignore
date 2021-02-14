@@ -3,3 +3,4 @@ test_report
 bin
 dist
 vendor
+coverage.txt

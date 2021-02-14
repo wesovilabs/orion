@@ -8,7 +8,7 @@ before_script:
 
 script:
   - make lint
-  - make test-unit
+  - make test-coverage
   - make build
 
 after_success:
