@@ -14,12 +14,9 @@ script:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
-before_deploy:
-  - make build-release
-  - make build-docker
 deploy:
   - provider: script
-    script: bash scripts/publish-docker.sh
+    script: make build-release
     on:
       tags: true
   - provider: releases
@@ -30,6 +27,14 @@ deploy:
       - bin/orion.exe
       - bin/orion.darwin
       - bin/orion.linux
+    on:
+      tags: true
+  - provider: script
+    script: make build-docker
+    on:
+      tags: true
+  - provider: script
+    script: bash scripts/publish-docker.sh
     on:
       tags: true
 
