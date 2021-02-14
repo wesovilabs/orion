@@ -3,6 +3,9 @@ language: go
 go:
   - 1.15.x
 
+before_script:
+  - go mod vendor
+
 script:
   - make lint
   - make test-unit
@@ -12,11 +15,13 @@ script:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
+
 deploy:
   provider: script
   script: bash scripts/publish-docker.sh
   on:
-    branch: master
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(develop|master)$
 
 notifications:
   email:
