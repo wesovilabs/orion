@@ -61,6 +61,18 @@ var testRunData = []struct {
 			``,
 		},
 	},
+	{
+		input: "feature004.hcl",
+		expectMessages: []string{
+			messageWithTimestamp(`\[feat: (.*)/feature004.hcl\]`),
+			``,
+			messageWithTimestamp(`\[scenario\] scenario demo`),
+			messageWithTimestamp(`When multiply x \* y`),
+			messageWithTimestamp(`Then check the output`),
+			messageWithTimestamp(`The scenario took .*.`),
+			``,
+		},
+	},
 }
 
 func TestRun(t *testing.T) {
