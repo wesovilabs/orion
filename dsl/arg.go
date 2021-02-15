@@ -36,8 +36,8 @@ func (a *Arg) Execute(ctx context.OrionContext) errors.Error {
 	return nil
 }
 
-// DecodeArg decode bock arg.
-func DecodeArg(b *hcl.Block) (*Arg, errors.Error) {
+// decodeArg decode bock arg.
+func decodeArg(b *hcl.Block) (*Arg, errors.Error) {
 	arg := new(Arg)
 	arg.name = b.Labels[0]
 	bc, d := b.Body.Content(schemaArg)

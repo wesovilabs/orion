@@ -2,7 +2,7 @@ package dsl
 
 import (
 	"github.com/hashicorp/hcl/v2"
-	actions2 "github.com/wesovilabs/orion/actions"
+	"github.com/wesovilabs/orion/actions"
 	"github.com/wesovilabs/orion/internal/errors"
 )
 
@@ -13,7 +13,7 @@ var schemaBody = &hcl.BodySchema{
 }
 
 type Body struct {
-	actions actions2.Actions
+	actions actions.Actions
 }
 
 func decodeBody(block *hcl.Block) (*Body, errors.Error) {
@@ -23,6 +23,9 @@ func decodeBody(block *hcl.Block) (*Body, errors.Error) {
 	}
 	if len(bodyContent.Attributes) > 0 {
 		return nil, errors.ThrowUnsupportedArguments(blockBody)
+	}
+	if len(bodyContent.Blocks) == 0 {
+		return nil, errors.IncorrectUsage("blcok '%s' must contain one action at least", blockBody)
 	}
 	actions, err := handler.DecodePlugins(bodyContent.Blocks)
 	if err != nil {

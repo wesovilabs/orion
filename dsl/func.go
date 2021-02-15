@@ -45,7 +45,7 @@ func decodeFunc(block *hcl.Block) (*Func, errors.Error) {
 		case blockArg:
 			function.args = make(Args, len(blocks))
 			for i := range blocks {
-				if function.args[i], err = DecodeArg(blocks[i]); err != nil {
+				if function.args[i], err = decodeArg(blocks[i]); err != nil {
 					return nil, err
 				}
 			}

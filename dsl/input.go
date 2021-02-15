@@ -61,7 +61,7 @@ func (i *Input) populateBlocks(blocks hcl.Blocks) errors.Error {
 		block := blocks[index]
 		switch block.Type {
 		case blockArg:
-			arg, err := DecodeArg(block)
+			arg, err := decodeArg(block)
 			if err != nil {
 				return err
 			}

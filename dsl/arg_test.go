@@ -59,7 +59,7 @@ func TestArg_Execute(t *testing.T) {
 	})
 	for index := range blocks {
 		block := blocks[index]
-		arg, err := DecodeArg(block)
+		arg, err := decodeArg(block)
 		if err != nil {
 			assert.Contains(t, expectedArgsDecodeErrs, err.Message())
 			continue
