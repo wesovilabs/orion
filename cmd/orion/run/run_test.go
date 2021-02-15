@@ -73,6 +73,19 @@ var testRunData = []struct {
 			``,
 		},
 	},
+	{
+		input: "feature004.hcl",
+		vars:  "vars004.hcl",
+		expectMessages: []string{
+			messageWithTimestamp(`\[feat: (.*)/feature004.hcl\]`),
+			``,
+			messageWithTimestamp(`\[scenario\] scenario demo`),
+			messageWithTimestamp(`When multiply x \* y`),
+			messageWithTimestamp(`Then check the output`),
+			messageWithTimestamp(`The scenario took .*.`),
+			``,
+		},
+	},
 }
 
 func TestRun(t *testing.T) {
@@ -92,7 +105,11 @@ func TestRun(t *testing.T) {
 		cmd := New()
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--input", fmt.Sprintf("testdata/%s", data.input)})
+		args:=[]string{"--input", fmt.Sprintf("testdata/%s", data.input)}
+		if data.vars!=""{
+			args=append(args,"--vars", fmt.Sprintf("testdata/%s", data.vars))
+		}
+		cmd.SetArgs(args)
 		err := cmd.Execute()
 		assert.Nil(t, err)
 		w.Close()
