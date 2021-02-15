@@ -3,12 +3,13 @@ package run
 import (
 	"bytes"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"io"
 	"os"
 	"regexp"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func messageWithTimestamp(msg string) string {
@@ -21,12 +22,39 @@ var testRunData = []struct {
 	expectMessages []string
 }{
 	{
-		input: "basic.hcl",
+		input: "feature001.hcl",
 		expectMessages: []string{
-			messageWithTimestamp(`\[feat: (.*)/basic.hcl\]`),
+			messageWithTimestamp(`\[feat: (.*)/feature001.hcl\]`),
 			``,
 			messageWithTimestamp(`\[scenario\] basic usage`),
 			messageWithTimestamp(`Given a couple of numbers`),
+			messageWithTimestamp(`When input values are sum`),
+			messageWithTimestamp(`Then the result of variable c is correct`),
+			messageWithTimestamp(`The scenario took .*.`),
+			``,
+		},
+	},
+	{
+		input: "feature002.hcl",
+		expectMessages: []string{
+			messageWithTimestamp(`\[feat: (.*)/feature002.hcl\]`),
+			``,
+			messageWithTimestamp(`\[scenario\] basic usage`),
+			messageWithTimestamp(`Given a couple of numbers`),
+			messageWithTimestamp(`When do addition with the numbers`),
+			messageWithTimestamp(`Then the result of variable c is correct`),
+			messageWithTimestamp(`When do subtraction with the numbers`),
+			messageWithTimestamp(`Then the result of variable c is correct`),
+			messageWithTimestamp(`The scenario took .*.`),
+			``,
+		},
+	},
+	{
+		input: "feature003.hcl",
+		expectMessages: []string{
+			messageWithTimestamp(`\[feat: (.*)/feature003.hcl\]`),
+			``,
+			messageWithTimestamp(`\[scenario\] basic usage`),
 			messageWithTimestamp(`When input values are sum`),
 			messageWithTimestamp(`Then the result of variable c is correct`),
 			messageWithTimestamp(`The scenario took .*.`),
