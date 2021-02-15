@@ -75,7 +75,7 @@ var testRunData = []struct {
 	},
 	{
 		input: "feature004.hcl",
-		vars:  "vars004.hcl",
+		vars:  "variables004.hcl",
 		expectMessages: []string{
 			messageWithTimestamp(`\[feat: (.*)/feature004.hcl\]`),
 			``,
@@ -105,9 +105,9 @@ func TestRun(t *testing.T) {
 		cmd := New()
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		args:=[]string{"--input", fmt.Sprintf("testdata/%s", data.input)}
-		if data.vars!=""{
-			args=append(args,"--vars", fmt.Sprintf("testdata/%s", data.vars))
+		args := []string{"--input", fmt.Sprintf("testdata/%s", data.input)}
+		if data.vars != "" {
+			args = append(args, "--vars", fmt.Sprintf("testdata/%s", data.vars))
 		}
 		cmd.SetArgs(args)
 		err := cmd.Execute()
