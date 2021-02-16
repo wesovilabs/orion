@@ -4,8 +4,8 @@ vars {
     { product = "meat",     vegan  = false  },
     { product = "fish",     vegan  = false  },
     { product = "avocado",  vegan  = true   },
-    { product = "sheep",   vegan  = false   },
-    { product = "rabbit",  vegan  = false   },
+    { product = "sheep",    vegan  = false  },
+    { product = "rabbit",   vegan  = false  },
   ]
 }
 
