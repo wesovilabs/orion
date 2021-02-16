@@ -1,14 +1,15 @@
 ---
 layout: default
-title: assert
+title: call
 parent: Actions
-nav_order: 3
+nav_order: 6
 ---
-<link rel="stylesheet" href="../../../assets/css/custom.css">
-# assert
 
-The action **assert** is used to verify the condition is satisfied. If condition
-was not satisfied the scenario would ends with enttot and next actions wouldn't be executed.
+<link rel="stylesheet" href="../../../assets/css/custom.css">
+
+# call
+
+The action **call** is used to invoke defined functions.
 
 ## Specification
 
@@ -16,20 +17,19 @@ was not satisfied the scenario would ends with enttot and next actions wouldn't 
 
 |                 | Tpye      | Required?| Vars supported? |
 |:----------------|:----------|---------:|----------------:|
-| **assertion**   | boolean   | yes      | yes             |
+| **as**          | string    | no       | no              |
 | **description** | string    | no       | no              |
 | **while**       | boolean   | no       | yes             |
 | **when**        | boolean   | no       | yes             |
 | **count**       | numeric   | no       | yes             |
 
+**as** ( string \| optional )  The name of the variable used to persist the output of the invoked function.
 
-**assertion** ( boolean \| required ) : Ic contains the condition to be evaluated.
-
-*Example 1: Basic use of argument assertion*
+*Example 1: Basic use of argument*
 
 ```hcl
-assert {
-  assertion = eq(firstname,"John") && person.age<=20
+call listPeople{
+  as = people
 }
 ```
 ---
@@ -38,9 +38,8 @@ assert {
 *Example 1: Basic use of argument*
 
 ```hcl
-assert {
-  description = "this statement is used to verify the job status is the expected"
-  assertion = eqIgnoreCase(job.build,"success")
+call createPerson{
+  description = "it invokes function createPerson"
 }
 ```
 ---
@@ -48,32 +47,50 @@ assert {
 
 ```hcl
 var {
-  evalJobStatus = false
+  mustCreatePerson = false
 }
 
-assert {
-  assertion = eqIgnoreCase(job.build,"success")
-  when = evalJobStatus && exists(job)
+call createPerson{
+  when = mustCreatePerson
 }
 ```
 ---
 **count** ( number || optional ) It determines the number of times the action is executed. Additionally, the variable **_.index** is increased in each iteration. 
 The value of _.index starts with 0 and it ends with count-1.
 
-*Example 1: Basic use of the argument count*
+*Example 1: Basic use of the argument*
 ```hcl
-assert {
-  assertion = eqIgnoreCase(job.build,"success") && _.index<5
+call createPerson{
+  with {
+    id = "user_${_.index}"
+  }
   count = 3
 }
+// After this statement the value of variable counter will be 2
 ```
+
 ---
 **while** ( boolean \| optional )  The action is executed repeatedly as long as the value of this argument is met. Additionally, the variable **_.index** is increased in each iteration. The value of _.index starts with 0 and increase in 1 in each iteration.
 
 *Example 1: Basic use of argument while*
 ```hcl
-assert {
-  assertion = eqIgnoreCase(job.build,"success") && _.index<5
+call createPerson{
+  with {
+    id = "user_${_.index}"
+  }
   while = _.index<=2
+}
+```
+
+### Blocks
+
+A function could require arguments. The arguments are provided within a block `with`. 
+
+```hcl
+call createPerson {
+    with {
+        firstname = user.firstname
+        role = "ADMIN"
+    }
 }
 ```
