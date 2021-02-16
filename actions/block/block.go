@@ -5,6 +5,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/wesovilabs/orion/actions"
 	"github.com/wesovilabs/orion/actions/assert"
+	"github.com/wesovilabs/orion/actions/call"
 	"github.com/wesovilabs/orion/actions/http"
 	"github.com/wesovilabs/orion/actions/mongo"
 	pprint "github.com/wesovilabs/orion/actions/print"
@@ -24,6 +25,7 @@ var decoders = map[string]actions.Decoder{
 	pprint.BlockPrint:  new(pprint.Decoder),
 	http.BlockHTTP:     new(http.Decoder),
 	mongo.BlockMongo:   new(mongo.Decoder),
+	call.BlockCall:     new(call.Decoder),
 }
 
 var schemaBlock = &hcl.BodySchema{
@@ -34,6 +36,7 @@ var schemaBlock = &hcl.BodySchema{
 		decoders[pprint.BlockPrint].BlockHeaderSchema(),
 		decoders[http.BlockHTTP].BlockHeaderSchema(),
 		decoders[mongo.BlockMongo].BlockHeaderSchema(),
+		decoders[call.BlockCall].BlockHeaderSchema(),
 	},
 }
 

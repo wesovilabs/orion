@@ -21,6 +21,10 @@ type Return struct {
 	value hcl.Expression
 }
 
+func (r *Return) Value() hcl.Expression{
+	return r.value
+}
+
 // DecodeBlock inherited method from interface Decoder.
 func decodeReturn(block *hcl.Block) (*Return, errors.Error) {
 	bodyContent, d := block.Body.Content(schemaReturn)
