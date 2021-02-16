@@ -144,6 +144,7 @@ func printVariables(ctx *hcl.EvalContext) {
 	}
 }
 
+// nolint
 func runFunction(ctx context.OrionContext, f *dsl.Function, out string) errors.Error {
 	if input := f.Input(); input != nil {
 		if err := input.Execute(ctx); err != nil {

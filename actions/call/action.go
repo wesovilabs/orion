@@ -8,7 +8,7 @@ import (
 	"github.com/wesovilabs/orion/internal/errors"
 )
 
-// Call used to invoke functions
+// Call used to invoke functions.
 type Call struct {
 	*actions.Base
 	name string
