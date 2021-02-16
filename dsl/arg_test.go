@@ -49,7 +49,7 @@ var orionCtx = context.New(map[string]cty.Value{
 		cty.StringVal("d"), cty.StringVal("e"), cty.StringVal("f"),
 	}),
 	"city": cty.StringVal("London"),
-})
+},nil)
 
 func TestArg_Execute(t *testing.T) {
 	blocks := oriontest.ParseHCL("testdata/args.hcl", &hcl.BodySchema{
