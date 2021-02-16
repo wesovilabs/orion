@@ -52,18 +52,7 @@ scenario "username details" {
 
 Orion is born to change the way we implement our acceptance tests. It takes advantage of HCL from Hashicorp to provide a **simple DSL to write the acceptance tests**. The syntax is inspired in Gherkin.
 
-## Goals
 
-- **Non-technical** people can design but also **implement the acceptance tests**.
-- It's implemented under a **pluggable architecture**. New actions can be implemented easily.
-- **Reusable** functionality can be shared between **features**.
 
-## License
-
-Software is completely free, and It will be distributed as opensource soon.
-
-## Contributing
-
-Orion will be opensource soon. In the meanwhile any feedback, suggestion is welcome! [Contact me](/contact/index/)
 
     
