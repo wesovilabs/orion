@@ -9,7 +9,7 @@ Before sending your pull requests, make sure you followed this list.
 - Read [Code of Conduct](CODE_OF_CONDUCT.md).
 - Run unit tests (`make test`)
 - Run linter checks ( `make lint`)
- 
+- Code coverage must be equal or higher than the existing one. 
  
 Before starting to code we recommend you to execute command `make setup`. This command downloads the dependencies, but it also
 creates a set of useful git hooks.   
