@@ -139,7 +139,7 @@ func TestPrint_Execute(t *testing.T) {
 		print, ok := action.(*Print)
 		assert.True(t, ok)
 		assert.NotNil(t, print)
-		err = print.Execute(context.New(variables))
+		err = print.Execute(context.New(variables,nil))
 		assert.Nil(t, err)
 	}
 	w.Close()
