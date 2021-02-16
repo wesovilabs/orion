@@ -60,7 +60,7 @@ func (e *executor) Run(envVariables map[string]cty.Value) errors.Error {
 
 	for index := range e.feature.Scenarios() {
 		fmt.Println()
-		ctx := context.New(envVariables)
+		ctx := context.New(envVariables, e.feature.Functions())
 		if err := e.feature.LoadVariables(ctx); err != nil {
 			return err
 		}
@@ -142,32 +142,4 @@ func printVariables(ctx *hcl.EvalContext) {
 		}
 		log.Trace(msg)
 	}
-}
-
-// nolint
-func runFunction(ctx context.OrionContext, f *dsl.Function, out string) errors.Error {
-	if input := f.Input(); input != nil {
-		if err := input.Execute(ctx); err != nil {
-			return err
-		}
-	}
-	actions := f.Body().Actions()
-	for index := range actions {
-		action := actions[index]
-		if action.ShouldExecute(ctx.EvalContext()) {
-			if err := action.Execute(ctx); err != nil {
-				return err
-			}
-			continue
-		}
-		log.Debugf("action %s is skipped!", action)
-	}
-	if f.Return() != nil {
-		result, d := f.Return().Value().Value(ctx.EvalContext())
-		if err := errors.EvalDiagnostics(d); err != nil {
-			return err
-		}
-		ctx.EvalContext().Variables[out] = result
-	}
-	return nil
 }

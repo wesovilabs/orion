@@ -20,13 +20,13 @@ func calculateKarma {
     block {
       set karma {
         value = karma + 1
-        when = _.item.vegan
+        when = ingredients[_.index].vegan
       }
       set karma {
         value = karma - 1
-        when = !_.item.vegan
+        when = !ingredients[_.index].vegan
       }
-      items = ingredients
+      count = len(ingredients)
     }
   }
   return {
@@ -40,12 +40,12 @@ scenario "calculate karma" {
       with{
         ingredients = items
       }
-      as = "karma"
+      as = "myKarma"
     }
   }
   then "the karma is -2" {
     assert {
-      assertion = _
+      assertion = myKarma == -2
     }
   }
 }

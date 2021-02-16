@@ -3,14 +3,13 @@ package executor
 import (
 	"io/ioutil"
 
-	"github.com/wesovilabs/orion/dsl"
-
 	"github.com/zclconf/go-cty/cty"
 
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
 	log "github.com/sirupsen/logrus"
 
+	"github.com/wesovilabs/orion/dsl"
 	"github.com/wesovilabs/orion/internal/errors"
 )
 

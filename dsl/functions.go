@@ -2,6 +2,8 @@ package dsl
 
 import (
 	"github.com/hashicorp/hcl/v2"
+	log "github.com/sirupsen/logrus"
+	"github.com/wesovilabs/orion/context"
 	"github.com/wesovilabs/orion/internal/errors"
 )
 
@@ -88,4 +90,32 @@ func decodeFunc(block *hcl.Block) (*Function, errors.Error) {
 		}
 	}
 	return function, nil
+}
+
+// nolint
+func (f *Function) runFunction(ctx context.OrionContext, out string) errors.Error {
+	if input := f.Input(); input != nil {
+		if err := input.Execute(ctx); err != nil {
+			return err
+		}
+	}
+	actions := f.Body().Actions()
+	for index := range actions {
+		action := actions[index]
+		if action.ShouldExecute(ctx.EvalContext()) {
+			if err := action.Execute(ctx); err != nil {
+				return err
+			}
+			continue
+		}
+		log.Debugf("action %s is skipped!", action)
+	}
+	if f.Return() != nil {
+		result, d := f.Return().Value().Value(ctx.EvalContext())
+		if err := errors.EvalDiagnostics(d); err != nil {
+			return err
+		}
+		ctx.EvalContext().Variables[out] = result
+	}
+	return nil
 }

@@ -41,14 +41,15 @@ func calculateKarma {
 
 A function is described with a name (`calculateKarma`), and the following three blocks:
 
-- **input**: Input arguments of the function. It's an optional  block.
+- **input**: Input arguments of the function. It's an optional  block. This block, is exactly the same, that the one used
+to define input arguments in a file.
 - **body** : Set of actions to be executed. It's required block.
 - **return**: The output value if is provided. It's an optional block.
 
 Additionally, we make use of action `call` to invoke a function.
 
 In the below example, th function `calculateKarma` receives a list of ingredients.
-Per each vegan ingredient the karma increases in one if not the karma reduces one.
+For each vegan ingredient increment the karma in 1, otherwise decrement the karma in 1.
 
 ```hcl
 vars {
@@ -69,17 +70,17 @@ func calculateKarma {
   body {
     set karma {
       value = 0
-    }   
+    }
     block {
       set karma {
         value = karma + 1
-        when = _.item.vegan
+        when = ingredients[_.index].vegan
       }
       set karma {
         value = karma - 1
-        when = !_.item.vegan
+        when = !ingredients[_.index].vegan
       }
-      items = ingredients
+      count = len(ingredients)
     }
   }
   return {
@@ -90,13 +91,17 @@ func calculateKarma {
 scenario "calculate karma" {
   when "calculate the karma"  {
     call calculateKarma {
-      ingredients = items
+      with{
+        ingredients = items
+      }
+      as = "myKarma"
     }
   }
   then "the karma is -2" {
     assert {
-      assertion = karma
+      assertion = myKarma == -2
     }
   }
 }
+
 ```
