@@ -86,5 +86,3 @@ func decodeFunc(block *hcl.Block) (*Function, errors.Error) {
 	}
 	return function, nil
 }
-
-
