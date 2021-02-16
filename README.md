@@ -8,6 +8,18 @@
 Orion is born to change the way we implement our acceptance tests. It takes advantage of HCL from Hashicorp t
 o provide a **simple DSL to write the acceptance tests**. The syntax is inspired in Gherkin.
 
-Please visit full documentation [http://www.wesovilabs.com/orion/](http://www.wesovilabs.com/orion/)
+> Please visit full documentation [http://www.wesovilabs.com/orion/](http://www.wesovilabs.com/orion/)
 
+## Tutorials & Guides
+
+- [Orion: A next-generation automation testing tool](https://ivan-corrales-solera.medium.com/orion-a-next-generation-automation-testing-tool-4ea53eeb2517)
+
+Additionally, a repository with a list of examples can be found [here](https://github.com/wesovilabs/orion-examples)
+
+## Contact
+
+Don't hesitate to reach me by email at `ivan.corrales.solera@gmail.com` or send me a message by 
+[Linkedin](https://www.linkedin.com/in/ivan-corrales-solera/) or [Twitter](https://twitter.com/wesovilabs)
+
+  
     
