@@ -5,26 +5,26 @@ nav_order: 2
 ---
 <link rel="stylesheet" href="../../assets/css/custom.css">
 
-# orion-cli
+# orion
 
-orion-cli is the command line interface for orion. Since the tool is still in progress
-new command will be available in short time. So far, we can use `orion-cli lint` and `orion-cli lint`.   
+orion is the command line interface for orion. Since the tool is still in progress
+new command will be available in short time. So far, we can use `orion lint` and `orion lint`.   
 
-## orion-cli help
+## orion help
 
 Help about any command. Additionally, we can show the help of a specific command:
 
-- `orion-cli help lint`
-- `orion-cli help run`
+- `orion help lint`
+- `orion help run`
 
-## orion-cli lint
+## orion lint
 
 Verify the content of the input file is correctly written.
 
 Available flags:
 - `--input`: Path of input file. 
 
-## orion-cli run
+## orion run
 
 Execute the scenarios in the provided input file.
 

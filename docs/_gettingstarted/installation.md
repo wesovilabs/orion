@@ -7,7 +7,7 @@ nav_order: 1
 
 # Installation
 
-## orion-cli
+## orion
 
 ### Install the pre-compiled binary
 
@@ -15,28 +15,28 @@ nav_order: 1
 
 Latest version: beta-0.0.1
 
-- [osx](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion-cli.darwin) 
-- [linux](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion-cli.linux) 
-- [windows](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion-cli.exe) 
+- [osx](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion.darwin) 
+- [linux](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion.linux) 
+- [windows](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion.exe) 
 
 **Tip**
 
 Once you download the binary I recommend you to do the below: 
 
 ```bash
-mkdir ~/.orion-cli
-mv orion-cli.darwin ~/.orion-cli/orion-cli   
+mkdir ~/.orion
+mv orion.darwin ~/.orion/orion   
 ```                                       
 Add an entry to your `~/.bash_profile`
 
 ```bash
-export PATH="~/.orion-cli:$PATH"
+export PATH="~/.orion:$PATH"
 ```
 
-To verify you installed orion-cli correctly, you just need to execute
+To verify you installed orion correctly, you just need to execute
 
 ```bash
-orion-cli help
+orion help
 ```
 
 ## Running with Docker
@@ -46,7 +46,7 @@ You can also use it within a Docker container. To do that, you'll need to execut
 ```bash
 docker run --rm  \
   -v $(PWD):/vars/feaatures \
-  ivancorrales/orion-cli:beta-0.0.1 run --input  /vars/feaatures/feature.hcl
+  ivancorrales/orion:beta-0.0.1 run --input  /vars/feaatures/feature.hcl
 ```
 
 

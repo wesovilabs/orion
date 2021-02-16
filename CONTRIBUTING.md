@@ -1,17 +1,31 @@
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. 
 
-Please note we have a code of conduct, please follow it in all your interactions with the project.
+## Pull Request Checklist
 
-## Pull Request Process
+Before sending your pull requests, make sure you followed this list.
 
-1. Ensure any install or build dependencies are removed before the end of the layer when doing a 
-   build.
-2. Update the README.md with details of changes to the interface, this includes new environment 
-   variables, exposed ports, useful file locations and container parameters.
-3. Increase the version numbers in any examples files and the README.md to the new version that this
-   Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
-4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you 
-   do not have permission to do that, you may request the second reviewer to merge it for you.
+- Read [contributing guidelines](CONTRIBUTING.md).
+- Read [Code of Conduct](CODE_OF_CONDUCT.md).
+- Run unit tests (`make test`)
+- Run linter checks ( `make lint`)
+ 
+ 
+Before starting to code we recommend you to execute command `make setup`. This command downloads the dependencies, but it also
+creates a set of useful git hooks.   
+ 
+Keep in mind the below considerations:
+
+- Commits must be descriptive and starts by one of the following prefixes `feat`, `fix`, `refactor`,  `test` and`docs`
+- Directory `vendor` mustn't be pushed to repository.
+- Write code thinking other people have to read it. 
+- Update documentation when required. Documentation can be found in [docs/](/docs).
+
+
+
+You can run any example with command
+
+```bash
+go run ./cmd/orion/orion.go run --input <INPUT_PATH>
+go run ./cmd/orion/orion.go run --input <INPUT_PATH> --vars <VARIABLES_PATH>
+```

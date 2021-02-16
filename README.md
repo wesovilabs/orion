@@ -18,7 +18,7 @@ Additionally, a repository with a list of examples can be found [here](https://g
 
 ## Contact
 
-Don't hesitate to reach me by email at `ivan.corrales.solera@gmail.com` or send me a message by 
+Don't hesitate to reach me by email at `ivan.corrales.solera@gmail.com` or send me a message through of
 [Linkedin](https://www.linkedin.com/in/ivan-corrales-solera/) or [Twitter](https://twitter.com/wesovilabs)
 
   
