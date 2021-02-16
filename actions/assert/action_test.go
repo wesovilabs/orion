@@ -24,7 +24,7 @@ func TestAssert_Assertion(t *testing.T) {
 			"lastname": cty.StringVal("Robot"),
 			"age":      cty.NumberIntVal(int64(20)),
 		}),
-	},nil)
+	}, nil)
 
 	for index := range content.Blocks {
 		expected := assertPluginResult[index]
