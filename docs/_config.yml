@@ -132,7 +132,7 @@ collections:
   spec:
     permalink: "/:collection/:path/"
     output: true
-  contact:
+  about:
     permalink: "/:collection/:path/"
     output: true
 
@@ -142,8 +142,8 @@ just_the_docs:
       name: Getting started
     spec:
       name: Specification
-    contact:
-      name: Contact & Support
+    about:
+      name: About
 
 kramdown:
   syntax_highlighter_opts:

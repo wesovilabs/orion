@@ -83,9 +83,9 @@ search:
   button: false
 
 # Aux links for the upper right navigation
-#aux_links:
-#  "Orion on GitHub":
-#    - "//github.com/wesovilabs/orion"
+aux_links:
+  "Orion on GitHub":
+    - "//github.com/wesovilabs/orion"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: false
@@ -135,7 +135,7 @@ collections:
   spec:
     permalink: "/:collection/:path/"
     output: true
-  contact:
+  about:
     permalink: "/:collection/:path/"
     output: true
 
@@ -145,8 +145,8 @@ just_the_docs:
       name: Getting started
     spec:
       name: Specification
-    contact:
-      name: Contact & Support
+    about:
+      name: About
 
 kramdown:
   syntax_highlighter_opts:

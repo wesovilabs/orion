@@ -26,6 +26,7 @@ block {
 - [assert](../assert)
 - [http](../http)
 - [mongo](../mongo)
+- [call](../call)
 
 ## Specification
 
@@ -73,7 +74,7 @@ block {
 ```
 
 ---
-**while** ( boolean \| optional )  The action is executed repeatedly as long as the value of this argumentis met. Additionally, the variable **_.index** is increased in each iteration. The value of _.index starts with 0 and increase in 1 in each iteration.
+**while** ( boolean \| optional )  The action is executed repeatedly as long as the value of this argument is met. Additionally, the variable **_.index** is increased in each iteration. The value of _.index starts with 0 and increase in 1 in each iteration.
 
 *Example 1: Basic use of argument while*
 ```hcl
