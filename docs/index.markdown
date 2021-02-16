@@ -5,15 +5,15 @@
 layout: home
 ---
 <link rel="stylesheet" href="assets/css/custom.css">
- 
+
 # Hello, I'm Orion
 
-Orion is born to simplify the way we write our acceptance tests. 
+Orion is born to simplify the way we write our acceptance tests.
 
 ```hcl
 input {
   arg ghBase {
-    default = "https://api.github.com"
+    default = "hattps://api.github.com"
   }
   arg expect {}
   arg orgId {}
