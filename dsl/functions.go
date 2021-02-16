@@ -37,7 +37,6 @@ func (f *Function) Return() *Return {
 }
 
 func decodeFunc(block *hcl.Block) (*Function, errors.Error) {
-	var err errors.Error
 	if len(block.Labels) != 1 {
 		return nil, errors.ThrowMissingRequiredLabel(labelName)
 	}
@@ -45,7 +44,7 @@ func decodeFunc(block *hcl.Block) (*Function, errors.Error) {
 		name: block.Labels[0],
 	}
 	bodyContent, d := block.Body.Content(schemaFunc)
-	if err = errors.EvalDiagnostics(d); err != nil {
+	if err := errors.EvalDiagnostics(d); err != nil {
 		return nil, err
 	}
 	if len(bodyContent.Attributes) > 0 {
@@ -67,18 +66,22 @@ func decodeFunc(block *hcl.Block) (*Function, errors.Error) {
 				return nil, errors.ThrowsExceeddedNumberOfBlocks(blockBody, 1)
 			}
 			if len(blocks) == 1 {
-				if function.body, err = decodeBody(blocks[0]); err != nil {
+				body, err := decodeBody(blocks[0])
+				if err != nil {
 					return nil, err
 				}
+				function.body = body
 			}
 		case blockReturn:
 			if len(blocks) > 1 {
 				return nil, errors.ThrowsExceeddedNumberOfBlocks(blockReturn, 1)
 			}
 			if len(blocks) == 1 {
-				if function.ret, err = decodeReturn(blocks[0]); err != nil {
+				ret, err := decodeReturn(blocks[0])
+				if err != nil {
 					return nil, err
 				}
+				function.ret = ret
 			}
 		default:
 			return nil, errors.ThrowUnsupportedBlock(blockFunc, name)
