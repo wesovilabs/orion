@@ -133,6 +133,15 @@ func (feature *Feature) hooksByTag(hooks map[string]*Hook, tags []string) []*Hoo
 	return output
 }
 
+func (feature *Feature) Functions() map[string]func(context.OrionContext, string) errors.Error {
+	output := make(map[string]func(context.OrionContext, string) errors.Error)
+	for index := range feature.functions {
+		function := feature.functions[index]
+		output[function.name] = function.runFunction
+	}
+	return output
+}
+
 func DecodeFeature(body hcl.Body) (*Feature, errors.Error) {
 	feature := &Feature{
 		scenarios: make([]*Scenario, 0),
