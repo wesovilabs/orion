@@ -10,7 +10,7 @@ import (
 func TestNewFeatureContextAndStop(t *testing.T) {
 	ctx := New(map[string]cty.Value{
 		"firstname": cty.StringVal("Sally"),
-	}).(*orionContext)
+	},nil).(*orionContext)
 	assert.NotNil(t, ctx.Variables())
 	assert.NotNil(t, ctx.EvalContext())
 	assert.Equal(t, ctx.EvalContext().Variables["firstname"], cty.StringVal("Sally"))
@@ -22,7 +22,7 @@ func TestNewFeatureContextAndStop(t *testing.T) {
 func TestNewFeatureContextAndFail(t *testing.T) {
 	ctx := New(map[string]cty.Value{
 		"firstname": cty.StringVal("Sally"),
-	}).(*orionContext)
+	},nil).(*orionContext)
 	assert.NotNil(t, ctx.Variables())
 	assert.NotNil(t, ctx.EvalContext())
 	assert.Equal(t, ctx.EvalContext().Variables["firstname"], cty.StringVal("Sally"))
