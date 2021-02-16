@@ -29,6 +29,6 @@ func main() {
 
 func command() *cobra.Command {
 	return &cobra.Command{
-		Use: "orion-cli [cmd]",
+		Use: "orion [cmd]",
 	}
 }

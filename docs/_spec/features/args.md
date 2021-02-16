@@ -65,7 +65,7 @@ company = "wesoviLabs"
 Values for the input arguments are passed using argument `--vars`.
 
 ```bash  
->> orion-cli run --input feature.hcl --vars variables.hcl
+>> orion run --input feature.hcl --vars variables.hcl
 # Tim Doe is hired at wesoviLabs
 # Loe Roe is hired at wesoviLabs
 ```
