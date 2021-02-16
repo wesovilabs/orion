@@ -2,7 +2,6 @@ package dsl
 
 import (
 	"github.com/hashicorp/hcl/v2"
-
 	"github.com/wesovilabs/orion/internal/errors"
 )
 
@@ -10,27 +9,39 @@ const blockFunc = "func"
 
 var schemaFunc = &hcl.BodySchema{
 	Blocks: []hcl.BlockHeaderSchema{
-		{Type: blockArg, LabelNames: []string{labelName}},
+		{Type: blockInput},
 		{Type: blockBody},
 		{Type: blockReturn},
 	},
 }
 
-type Functions map[string]*Func
+type Functions map[string]*Function
 
-type Func struct {
-	name string
-	args Args
-	ret  *Return
-	body *Body
+type Function struct {
+	name  string
+	input *Input
+	ret   *Return
+	body  *Body
 }
 
-func decodeFunc(block *hcl.Block) (*Func, errors.Error) {
+func (f *Function) Input() *Input {
+	return f.input
+}
+
+func (f *Function) Body() *Body {
+	return f.body
+}
+
+func (f *Function) Return() *Return {
+	return f.ret
+}
+
+func decodeFunc(block *hcl.Block) (*Function, errors.Error) {
 	var err errors.Error
 	if len(block.Labels) != 1 {
 		return nil, errors.ThrowMissingRequiredLabel(labelName)
 	}
-	function := &Func{
+	function := &Function{
 		name: block.Labels[0],
 	}
 	bodyContent, d := block.Body.Content(schemaFunc)
@@ -42,13 +53,15 @@ func decodeFunc(block *hcl.Block) (*Func, errors.Error) {
 	}
 	for name, blocks := range bodyContent.Blocks.ByType() {
 		switch name {
-		case blockArg:
-			function.args = make(Args, len(blocks))
-			for i := range blocks {
-				if function.args[i], err = decodeArg(blocks[i]); err != nil {
-					return nil, err
-				}
+		case blockInput:
+			if len(blocks) > 1 {
+				return nil, errors.ThrowsExceeddedNumberOfBlocks(blockBody, 1)
 			}
+			input, err := decodeInput(blocks[0])
+			if err != nil {
+				return nil, err
+			}
+			function.input = input
 		case blockBody:
 			if len(blocks) > 1 {
 				return nil, errors.ThrowsExceeddedNumberOfBlocks(blockBody, 1)
@@ -73,3 +86,5 @@ func decodeFunc(block *hcl.Block) (*Func, errors.Error) {
 	}
 	return function, nil
 }
+
+

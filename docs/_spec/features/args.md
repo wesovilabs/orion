@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Input variables
-nav_order: 1
+title: Input arguments
+nav_order: 3
 parent: Feature
 ---
 
 <link rel="stylesheet" href="../../../assets/css/custom.css">
 
-# Input Variables
+# Input Arguments
 
-It's used to run acceptance tests with data provided by the user. Variables are defined inside a block `input`. 
+It's used to run acceptance tests with data provided by the user. Arguments are defined inside a block `input`. 
 Only one block `input` is permitted per file. 
 
 **Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature002.hcl)
@@ -46,9 +46,9 @@ scenario "print variables" {
 }
 ```
 
-Providing variables is not rquired since both, variables `people` and `company` have a default value
+Providing variables is not required since both, arguments `people` and `company` have a default value
 
-So far, variables can be provided by passing a HCL file. This file contains one entre per variable.
+So far, arguments can be provided by passing a HCL file. This file contains one entry per argument.
 
 **Example**: [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/variables002.hcl)
 
@@ -60,9 +60,9 @@ people = [
 company = "wesoviLabs"
 ```
 
-*In upcoming releases, variables could be passed by a flag or being taken by the environment.*
+*In upcoming releases, arguments could be passed by a flag or being taken by the environment.*
 
-Variables are passed using argument `--vars`.
+Values for the input arguments are passed using argument `--vars`.
 
 ```bash  
 >> orion-cli run --input feature.hcl --vars variables.hcl
@@ -79,7 +79,7 @@ It acts like a container that groups a set of blocks `arg`. As It was mentioned 
 
 ### arg
 
-It is used to define an input variable. It's declared as `arg <var>`, where var is the name of the variable. 
+It is used to define an input argument. It's declared as `arg <name>`, where name is the name of the argument. 
 
 
 **Example**
@@ -97,8 +97,8 @@ input {
 
 Two optional attributes can be provided in the block `arg`. 
 
-- **description**: A string value that provides a brief description of the variable.
-- **default**: Value that will be used in case of the variable is not provided.
+- **description**: A string value that provides a brief description of the argument.
+- **default**: Value that will be used in case of the argument is not provided.
 
 ```hcl
 arg firstname {

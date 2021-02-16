@@ -16,6 +16,10 @@ type Body struct {
 	actions actions.Actions
 }
 
+func ( b *Body) Actions() actions.Actions{
+	return b.actions
+}
+
 func decodeBody(block *hcl.Block) (*Body, errors.Error) {
 	bodyContent, d := block.Body.Content(schemaBody)
 	if err := errors.EvalDiagnostics(d); err != nil {

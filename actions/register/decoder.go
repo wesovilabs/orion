@@ -5,6 +5,7 @@ import (
 	"github.com/wesovilabs/orion/actions"
 	"github.com/wesovilabs/orion/actions/assert"
 	"github.com/wesovilabs/orion/actions/block"
+	"github.com/wesovilabs/orion/actions/call"
 	"github.com/wesovilabs/orion/actions/http"
 	"github.com/wesovilabs/orion/actions/mongo"
 	pprint "github.com/wesovilabs/orion/actions/print"
@@ -18,6 +19,7 @@ var decoders = map[string]actions.Decoder{
 	http.BlockHTTP:     new(http.Decoder),
 	mongo.BlockMongo:   new(mongo.Decoder),
 	block.BlockBlock:   new(block.Decoder),
+	call.BlockCall:     new(call.Decoder),
 }
 
 var schemaPlugins = &hcl.BodySchema{
@@ -29,5 +31,6 @@ var schemaPlugins = &hcl.BodySchema{
 		decoders[http.BlockHTTP].BlockHeaderSchema(),
 		decoders[mongo.BlockMongo].BlockHeaderSchema(),
 		decoders[block.BlockBlock].BlockHeaderSchema(),
+		decoders[call.BlockCall].BlockHeaderSchema(),
 	},
 }

@@ -49,8 +49,10 @@ scenario "operation add" {
 We can make use of the attribute `description` to describe what the feature does. 
 In a feature we can find the below sections::
 
-- [Input variables](../variables)
+- [Variables](../vars)
+- [Input arguments](../args)
 - [Scenarios](../scenarios)
 - [Hooks](../hooks)
 - [Includes](../includes)
+- [Functions](../functions)
 

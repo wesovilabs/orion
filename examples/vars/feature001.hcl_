@@ -46,4 +46,43 @@ scenario "feature with array var" {
       assertion = karma==0
     }
   }
+  when "delete dead life" {
+    set goodElements {
+      value = []
+    }
+    block {
+      set goodElements {
+        arrayIndex = len(goodElements)
+        value = elements[_.index]
+        when = elements[_.index].vegan
+      }
+      count = len(elements)
+    }
+    set elements {
+      value = goodElements
+    }
+  }
+  then "check the good elements" {
+    assert {
+      assertion = len(goodElements)==2
+    }
+  }
+  when "calculate karma" {
+    block {
+      set karma {
+        value = karma + 1
+        when = elements[_.index].vegan
+      }
+      set karma {
+        value = karma - 1
+        when = !elements[_.index].vegan
+      }
+      count = len(elements)
+    }
+  }
+  then "check output" {
+    assert {
+      assertion = karma==2
+    }
+  }
 }
