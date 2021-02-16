@@ -21,7 +21,7 @@ type Return struct {
 	value hcl.Expression
 }
 
-func (r *Return) Value() hcl.Expression{
+func (r *Return) Value() hcl.Expression {
 	return r.value
 }
 

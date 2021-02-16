@@ -4,7 +4,6 @@ import (
 	"github.com/hashicorp/hcl/v2"
 	"github.com/wesovilabs/orion/actions"
 	"github.com/wesovilabs/orion/context"
-	"github.com/wesovilabs/orion/dsl"
 	"github.com/wesovilabs/orion/helper"
 	"github.com/wesovilabs/orion/internal/errors"
 )
@@ -12,7 +11,7 @@ import (
 // Call used to invoke functions
 type Call struct {
 	*actions.Base
-	function *dsl.Function
+	name string
 	as   string
 	with hcl.Attributes
 }

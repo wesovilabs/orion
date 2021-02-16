@@ -16,7 +16,7 @@ type Body struct {
 	actions actions.Actions
 }
 
-func ( b *Body) Actions() actions.Actions{
+func (b *Body) Actions() actions.Actions {
 	return b.actions
 }
 
