@@ -13,11 +13,11 @@ nav_order: 1
 
 **manually**: Download the pre-compiled binaries from the [releases page](https://github.com/wesovilabs/orion/releases) and copy to the desired location
 
-Latest version: beta-0.0.1
+Latest version: beta-v2
 
-- [osx](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion.darwin) 
-- [linux](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion.linux) 
-- [windows](https://github.com/wesovilabs/orion/releases/download/beta-0.0.1/orion.exe) 
+- [osx](https://github.com/wesovilabs/orion/releases/download/beta-v2/orion.darwin) 
+- [linux](https://github.com/wesovilabs/orion/releases/download/beta-v2/orion.linux) 
+- [windows](https://github.com/wesovilabs/orion/releases/download/beta-v2/orion.exe) 
 
 **Tip**
 
@@ -46,10 +46,14 @@ You can also use it within a Docker container. To do that, you'll need to execut
 ```bash
 docker run --rm  \
   -v $(PWD):/vars/feaatures \
-  ivancorrales/orion:beta-0.0.1 run --input  /vars/feaatures/feature.hcl
+  wesovilabs/orion:beta-v2 run --input  /vars/feaatures/feature.hcl
 ```
-
 
 ## Compiling from source
 
-Coming sooon.
+```bash
+git clone git@github.com:wesovilabs/orion.git
+cd orion
+make setup
+make build
+```
