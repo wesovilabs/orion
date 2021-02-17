@@ -70,6 +70,7 @@ func (feature *Feature) Join(include *Feature) {
 		}
 	}
 	feature.vars.Append(include.vars)
+	feature.functions.Append(include.functions)
 }
 
 func (feature *Feature) Description() string {
@@ -148,6 +149,8 @@ func DecodeFeature(body hcl.Body) (*Feature, errors.Error) {
 		includes:  make(Includes, 0),
 		beforeTag: make(Hooks),
 		afterTag:  make(Hooks),
+		functions: make(Functions),
+		vars:      make(Vars),
 	}
 	bc, d := body.Content(schemaFeature)
 	if err := errors.EvalDiagnostics(d); err != nil {

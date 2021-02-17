@@ -51,6 +51,7 @@ func (h *HTTP) Execute(ctx context.OrionContext) errors.Error {
 	}
 	executor.URL = fmt.Sprintf("%s%s", baseURL, path)
 	executor.Method = h.Method()
+
 	if executor.Headers, err = h.request.Headers(evalCtx); err != nil {
 		return err
 	}
@@ -63,7 +64,9 @@ func (h *HTTP) Execute(ctx context.OrionContext) errors.Error {
 	if executor.Cookies, err = h.request.Cookies(evalCtx); err != nil {
 		return err
 	}
-
+	if executor.Body, err = h.request.BodyData(evalCtx); err != nil {
+		return err
+	}
 	log.Debugf("[%s] It starts the execution", BlockHTTP)
 
 	vars, err := executor.Execute()

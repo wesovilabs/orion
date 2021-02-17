@@ -1,7 +1,5 @@
 # Contributing
 
-# Contributing
-
 Visit [the open issues](https://github.com/wesovilabs/orion/issues) and feel free to take one of this.
 
 This is only the beginning! By the way, If you missed any action,  or you found a bug, please [create a new issue on Github or vote the existing ones](https://github.com/wesovilabs/orion/issues)!
