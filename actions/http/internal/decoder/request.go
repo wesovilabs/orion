@@ -51,11 +51,11 @@ func (req *Request) AddHeaders(headers map[string]hcl.Expression) {
 	}
 }
 
-func (req *Request) BodyData(ctx *hcl.EvalContext) (string,errors.Error){
-	if req.payload!=nil {
+func (req *Request) BodyData(ctx *hcl.EvalContext) (string, errors.Error) {
+	if req.payload != nil {
 		return req.payload.Data(ctx)
 	}
-	return "",nil
+	return "", nil
 }
 
 func (req *Request) Cookies(ctx *hcl.EvalContext) ([]*executor.Cookie, errors.Error) {

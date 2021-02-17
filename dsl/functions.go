@@ -2,6 +2,7 @@ package dsl
 
 import (
 	"fmt"
+
 	"github.com/hashicorp/hcl/v2"
 	log "github.com/sirupsen/logrus"
 	"github.com/wesovilabs/orion/context"
@@ -125,5 +126,5 @@ func (functions Functions) Append(newFunctions Functions) {
 	for name, value := range newFunctions {
 		functions[name] = value
 	}
-	fmt.Printf("total functions %d\n",len(functions))
+	fmt.Printf("total functions %d\n", len(functions))
 }

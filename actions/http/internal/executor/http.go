@@ -1,6 +1,7 @@
 package executor
 
 import (
+	"context"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -67,7 +68,7 @@ func (action *HTTP) httpMethod() string {
 }
 
 func (action *HTTP) buildRequest() (*http.Request, errors.Error) {
-	req, err := http.NewRequest(action.httpMethod(), action.URL,
+	req, err := http.NewRequestWithContext(context.Background(), action.httpMethod(), action.URL,
 		strings.NewReader(action.Body))
 	if err != nil {
 		return nil, errors.Unexpected(err.Error())
