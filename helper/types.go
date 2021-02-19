@@ -38,7 +38,6 @@ func ToValueMap(input map[string]interface{}) cty.Value {
 	return cty.ObjectVal(output)
 }
 
-
 func toValueMapString(input map[string]string) cty.Value {
 	output := make(map[string]cty.Value)
 	for name, value := range input {
@@ -91,14 +90,14 @@ func ToValue(value interface{}) cty.Value {
 	case []interface{}:
 		return ToValueList(v)
 	case []map[string]interface{}:
-		out:=make([]cty.Value,len(v))
-		for index:=range v{
-			item:=v[index]
-			props:=make(map[string]cty.Value)
-			for k,v:=range item{
-				props[k]=ToValue(v)
+		out := make([]cty.Value, len(v))
+		for index := range v {
+			item := v[index]
+			props := make(map[string]cty.Value)
+			for k, v := range item {
+				props[k] = ToValue(v)
 			}
-			out[index]=cty.MapVal(props)
+			out[index] = cty.MapVal(props)
 		}
 		return cty.ListVal(out)
 	case nil:
