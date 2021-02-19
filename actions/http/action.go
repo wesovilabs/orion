@@ -74,7 +74,7 @@ func (h *HTTP) Execute(ctx context.OrionContext) errors.Error {
 		return err
 	}
 	vars.SetToContext(evalCtx)
-	if err := helper.EvaluateExpressions(evalCtx, h.response.Values()); err != nil {
+	if err := helper.EvalUnorderedExpression(evalCtx, h.response.Values()); err != nil {
 		return err
 	}
 	cleanVariables(evalCtx)

@@ -1,0 +1,62 @@
+# Basic details about this repository.
+
+[project]
+name = "."
+version = "0.1.0"
+
+# Dependencies section lists the packages that are required to build your project.
+# Melody uses this information to compute and install all downstream dependencies.
+# The keys in this section are the package names and values are version restrictions.
+# You can use a specific tagged version, SHA revision, or a version range to narrow
+# down what is compatible with your project:
+# https://github.com/melodysh/melody#specifying-dependency-restrictions
+#
+# Please note that dependencies are package names as specified in your import
+# statements, NOT repository paths.  Although a repository path may exist, you
+# will see an error if the root package cannot be imported.
+
+[dependencies]
+"github.com/daviddengcn/go-colortext" = "head"
+"github.com/hashicorp/hcl/v2" = "head"
+"github.com/hashicorp/hcl/v2/hclparse" = "head"
+"github.com/hashicorp/hcl/v2/hclsyntax" = "head"
+"github.com/mitchellh/go-homedir" = "head"
+"github.com/sirupsen/logrus" = "head"
+"github.com/spf13/cobra" = "head"
+"github.com/spf13/viper" = "head"
+"github.com/stretchr/testify/assert" = "head"
+"github.com/wesovilabs/orion/actions" = "head"
+"github.com/wesovilabs/orion/actions/assert" = "head"
+"github.com/wesovilabs/orion/actions/block" = "head"
+"github.com/wesovilabs/orion/actions/call" = "head"
+"github.com/wesovilabs/orion/actions/http" = "head"
+"github.com/wesovilabs/orion/actions/http/internal/decoder" = "head"
+"github.com/wesovilabs/orion/actions/http/internal/executor" = "head"
+"github.com/wesovilabs/orion/actions/mongo" = "head"
+"github.com/wesovilabs/orion/actions/mongo/internal/decoder" = "head"
+"github.com/wesovilabs/orion/actions/mongo/internal/executor" = "head"
+"github.com/wesovilabs/orion/actions/mongo/internal/helper" = "head"
+"github.com/wesovilabs/orion/actions/print" = "head"
+"github.com/wesovilabs/orion/actions/print/internal" = "head"
+"github.com/wesovilabs/orion/actions/register" = "head"
+"github.com/wesovilabs/orion/actions/set" = "head"
+"github.com/wesovilabs/orion/actions/shared" = "head"
+"github.com/wesovilabs/orion/cmd/orion/common" = "head"
+"github.com/wesovilabs/orion/cmd/orion/help" = "head"
+"github.com/wesovilabs/orion/cmd/orion/lint" = "head"
+"github.com/wesovilabs/orion/cmd/orion/run" = "head"
+"github.com/wesovilabs/orion/context" = "head"
+"github.com/wesovilabs/orion/dsl" = "head"
+"github.com/wesovilabs/orion/executor" = "head"
+"github.com/wesovilabs/orion/functions" = "head"
+"github.com/wesovilabs/orion/helper" = "head"
+"github.com/wesovilabs/orion/internal/config" = "head"
+"github.com/wesovilabs/orion/internal/errors" = "head"
+"github.com/wesovilabs/orion/internal/logger" = "head"
+"github.com/wesovilabs/orion/internal/oriontest" = "head"
+"github.com/zclconf/go-cty/cty" = "head"
+"github.com/zclconf/go-cty/cty/function" = "head"
+"go.mongodb.org/mongo-driver/bson" = "head"
+"go.mongodb.org/mongo-driver/bson/primitive" = "head"
+"go.mongodb.org/mongo-driver/mongo" = "head"
+"go.mongodb.org/mongo-driver/mongo/options" = "head"

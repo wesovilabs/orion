@@ -20,12 +20,7 @@ var unknownVarRegExp = regexp.MustCompile(`There is no variable named \"([a-zA-Z
 
 // EvalAttribute evaluate the hcl attribute.
 func EvalAttribute(ctx *hcl.EvalContext, attribute *hcl.Attribute) (cty.Value, errors.Error) {
-	return EvalExpression(ctx, attribute.Expr)
-}
-
-// EvalExpression evaluate the hcl expression.
-func EvalExpression(ctx *hcl.EvalContext, expr hcl.Expression) (cty.Value, errors.Error) {
-	value, d := expr.Value(ctx)
+	value, d := attribute.Expr.Value(ctx)
 	if err := errors.EvalDiagnostics(d); err != nil {
 		return cty.NilVal, err
 	}
@@ -33,21 +28,8 @@ func EvalExpression(ctx *hcl.EvalContext, expr hcl.Expression) (cty.Value, error
 	return value, nil
 }
 
-// EvalAttributeAsSlice evaluate the hcl attribute and convert it into a slice.
-func EvalAttributeAsSlice(ctx *hcl.EvalContext, attribute *hcl.Attribute) ([]cty.Value, errors.Error) {
-	value, err := EvalExpression(ctx, attribute.Expr)
-	if err != nil {
-		return nil, err
-	}
-	if value.Type().IsListType() || value.Type().IsTupleType() || value.Type().IsCollectionType() {
-		return value.AsValueSlice(), nil
-	}
-
-	return nil, errors.InvalidArguments("expected a slice field but it's not")
-}
-
-// EvaluateExpressions evaluate the the list of expressions.
-func EvaluateExpressions(ctx *hcl.EvalContext, expressions map[string]hcl.Expression) errors.Error {
+// EvalUnorderedExpression evaluate the the list of expressions.
+func EvalUnorderedExpression(ctx *hcl.EvalContext, expressions map[string]hcl.Expression) errors.Error {
 	pendingExpressions := make(map[string]hcl.Expression)
 	for name, expr := range expressions {
 		value, diagnostics := expr.Value(ctx)
@@ -63,7 +45,7 @@ func EvaluateExpressions(ctx *hcl.EvalContext, expressions map[string]hcl.Expres
 	}
 
 	if len(pendingExpressions) > 0 {
-		return EvaluateExpressions(ctx, pendingExpressions)
+		return EvalUnorderedExpression(ctx, pendingExpressions)
 	}
 
 	return nil
@@ -73,6 +55,9 @@ func EvaluateExpressions(ctx *hcl.EvalContext, expressions map[string]hcl.Expres
 // EvaluateArrayItemExpression evaluate the the list of expressions.
 func EvaluateArrayItemExpression(ctx *hcl.EvalContext, name string, index int, val hcl.Expression) errors.Error {
 	arrayValue := ctx.Variables[name]
+	if arrayValue == cty.NilVal {
+		return errors.IncorrectUsage("variable '%s' doesn't exist", name)
+	}
 	valueSlice := arrayValue.AsValueSlice()
 	item, d := val.Value(ctx)
 	if err := errors.EvalDiagnostics(d); err != nil {
@@ -83,12 +68,6 @@ func EvaluateArrayItemExpression(ctx *hcl.EvalContext, name string, index int, v
 	}
 	if IsMap(item) {
 		newItem := item.AsValueMap()
-		if len(valueSlice) <= index {
-			item = cty.ObjectVal(newItem)
-			valueSlice = append(valueSlice, item)
-			ctx.Variables[name] = cty.ListVal(valueSlice)
-			return nil
-		}
 		old := valueSlice[index].AsValueMap()
 		if old != nil {
 			for k, v := range newItem {
@@ -101,7 +80,7 @@ func EvaluateArrayItemExpression(ctx *hcl.EvalContext, name string, index int, v
 
 	}
 	valueSlice[index] = item
-	ctx.Variables[name] = cty.ListVal(valueSlice)
+	ctx.Variables[name] = cty.TupleVal(valueSlice)
 	return nil
 }
 
