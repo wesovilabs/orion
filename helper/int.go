@@ -23,5 +23,5 @@ func GetExpressionValueAsInt(ctx *hcl.EvalContext, expr hcl.Expression, def int)
 		return int(out), nil
 	}
 
-	return 0, errors.IncorrectUsage("value is not a valid number")
+	return def, nil
 }

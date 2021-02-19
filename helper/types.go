@@ -14,15 +14,6 @@ func IsSlice(value cty.Value) bool {
 	return value.Type().IsListType() || value.Type().IsTupleType() || value.Type().IsCollectionType()
 }
 
-// ValuesSlice convert the value into a slice.
-func ValuesSlice(value cty.Value) ([]cty.Value, errors.Error) {
-	if value.Type().IsListType() || value.Type().IsTupleType() || value.Type().IsCollectionType() {
-		return value.AsValueSlice(), nil
-	}
-
-	return nil, errors.InvalidArguments("expected a slice field but it's not")
-}
-
 // ToStrictString convert the value into a string.
 func ToStrictString(value cty.Value) (string, errors.Error) {
 	if value.Type() == cty.String {
@@ -63,7 +54,9 @@ func ToValue(value interface{}) cty.Value {
 	switch v := value.(type) {
 	case string:
 		return cty.StringVal(v)
-	case int, int8, int16, int32, int64:
+	case int:
+		return cty.NumberIntVal(int64(v))
+	case int8, int16, int32, int64:
 		return cty.NumberIntVal(v.(int64))
 	case float32, float64:
 		return cty.NumberFloatVal(v.(float64))
