@@ -1,10 +1,11 @@
 package helper
 
 import (
-	"github.com/stretchr/testify/assert"
-	"github.com/wesovilabs/orion/testutil"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/wesovilabs/orion/testutil"
 )
 
 func TestGetExpressionValueAsDuration(t *testing.T) {
@@ -24,9 +25,9 @@ func TestGetExpressionValueAsDuration(t *testing.T) {
 		varDuration = "2s"
 		varDuration2 = "2m"
 		varDuration3 = "2h"
-		varDuration4 = "2h2m 2s"
+		varDuration4 = "2h2m2s"
 	`
-	defDuration:=3*time.Second
+	defDuration := 3 * time.Second
 	attrs, err := testutil.GetAttributesFromText(text)
 	assert.Nil(t, err)
 	value, err := GetExpressionValueAsDuration(testEvalCtx, attrs["varNumber"].Expr, &defDuration)
@@ -69,5 +70,5 @@ func TestGetExpressionValueAsDuration(t *testing.T) {
 	value, err = GetExpressionValueAsDuration(testEvalCtx, attrs["varDuration4"].Expr, &defDuration)
 	assert.Nil(t, err)
 	assert.NotNil(t, value)
-	assert.EqualValues(t,2*time.Hour + 2*time.Minute + 2*time.Second, *value)
+	assert.EqualValues(t, 2*time.Hour+2*time.Minute+2*time.Second, *value)
 }
