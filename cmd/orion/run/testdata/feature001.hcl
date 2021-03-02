@@ -1,4 +1,5 @@
 scenario "basic usage" {
+  tags = ["basic", "usage"]
   given "a couple of numbers" {
     set a {
       value = 1

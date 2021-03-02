@@ -16,18 +16,21 @@ import (
 
 type Executor interface {
 	SetUp(path string) errors.Error
+	WithTags(tags []string)
 	Run(variablesPath map[string]cty.Value) errors.Error
 }
 
 func New() Executor {
 	return &executor{
-		dec: new(decoder),
+		dec:  new(decoder),
+		tags: make([]string, 0),
 	}
 }
 
 type executor struct {
 	dec     Decoder
 	feature *dsl.Feature
+	tags    []string
 }
 
 func (e *executor) SetUp(path string) errors.Error {
@@ -41,6 +44,26 @@ func (e *executor) SetUp(path string) errors.Error {
 	log.Tracef("The feature contains %d scenarios", len(feat.Scenarios()))
 	e.feature = feat
 	return nil
+}
+
+func (e *executor) WithTags(tags []string) {
+	e.tags = uniqueAndNotBlank(tags)
+	log.Infof("[tags: %v]", e.tags)
+}
+
+func uniqueAndNotBlank(names []string) []string {
+	keys := make(map[string]bool)
+	var list []string
+	for _, entry := range names {
+		if entry == "" {
+			continue
+		}
+		if _, value := keys[entry]; !value {
+			keys[entry] = true
+			list = append(list, entry)
+		}
+	}
+	return list
 }
 
 func (e *executor) Run(envVariables map[string]cty.Value) errors.Error {
@@ -68,6 +91,10 @@ func (e *executor) Run(envVariables map[string]cty.Value) errors.Error {
 		log.Info(scenario)
 		if scenario.IsIgnored(ctx.EvalContext()) {
 			log.Warning("scenario is skipped!")
+			continue
+		}
+		if len(e.tags) != 0 && !scenario.IsContainingAnyTag(e.tags) {
+			log.Warning("scenario does not contain any of the specified tags!")
 			continue
 		}
 		examples, err := scenario.Examples(ctx)
