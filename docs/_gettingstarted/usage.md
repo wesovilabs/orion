@@ -31,4 +31,5 @@ Execute the scenarios in the provided input file.
 Available flags:
 - `--input`: path of the input file.
 - `--vars`: path of the variables file.
+- `--tags`: comma separated list of tag names. Scenarios containing any of the listed tags will be executed.
 - `--verbose`: log level. Supported values are: 'DEBUG','INFO','WARN','ERROR' (default "INFO").

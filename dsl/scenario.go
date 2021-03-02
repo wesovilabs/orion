@@ -148,6 +148,21 @@ func (s *Scenario) IsIgnored(ctx *hcl.EvalContext) bool {
 	return value.True()
 }
 
+func (s *Scenario) IsContainingAnyTag(expectedTags []string) bool {
+	sTags := make(map[string]bool)
+	for _, t := range s.Tags() {
+		sTags[t] = true
+	}
+
+	for _, et := range expectedTags {
+		if sTags[et] {
+			log.Debugf("Tag found: '%s'", et)
+			return true
+		}
+	}
+	return false
+}
+
 func decodeScenario(b *hcl.Block) (*Scenario, errors.Error) {
 	scenario := &Scenario{
 		description: b.Labels[0],

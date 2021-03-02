@@ -18,6 +18,7 @@ const (
 	flagInputPath     = "input"
 	flagVariablesPath = "vars"
 	flagVerbose       = "verbose"
+	flagTags          = "tags"
 	defInputPath      = "feature.hcl"
 )
 
@@ -33,6 +34,7 @@ var (
 	`
 	inputPath     string
 	variablesPath string
+	tags          []string
 	verbose       string
 )
 
@@ -55,6 +57,11 @@ func New() *cobra.Command {
 		flagVariablesPath,
 		"",
 		"path of the variables file")
+	cmd.PersistentFlags().StringSliceVar(
+		&tags,
+		flagTags,
+		[]string{},
+		"comma separated list of tag names. Scenarios containing any of the listed tags will be executed.")
 	cmd.PersistentFlags().StringVar(
 		&verbose,
 		flagVerbose,
@@ -78,6 +85,15 @@ func run(cmd *cobra.Command, args []string) {
 		common.PrintError(cmd, err)
 		os.Exit(err.ExitStatus())
 	}
+
+	tags, tErr := cmd.PersistentFlags().GetStringSlice(flagTags)
+	if tErr != nil {
+		unexpected := errors.Unexpected("tags parse error: %s", tErr)
+		common.PrintError(cmd, unexpected)
+		os.Exit(unexpected.ExitStatus())
+	}
+	exec.WithTags(tags)
+
 	variablesPath := cmd.Flag(flagVariablesPath)
 	variables := make(map[string]cty.Value)
 	var err errors.Error
