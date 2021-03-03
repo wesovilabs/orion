@@ -67,7 +67,7 @@ func populateMongoAttributes(mongo *Mongo, attrs hcl.Attributes) errors.Error {
 	for name := range attrs {
 		attribute := attrs[name]
 		switch {
-		case actions.IsPluginBaseArgument(name):
+		case actions.IsCommonAttribute(name):
 			if err := actions.SetBaseArgs(mongo, attribute); err != nil {
 				return err
 			}

@@ -22,7 +22,7 @@ func (set *Set) populateAttributes(attrs hcl.Attributes) errors.Error {
 	for name := range attrs {
 		attribute := attrs[name]
 		switch {
-		case actions.IsPluginBaseArgument(name):
+		case actions.IsCommonAttribute(name):
 			if err := actions.SetBaseArgs(set, attribute); err != nil {
 				return err
 			}
@@ -49,7 +49,7 @@ func (set *Set) Execute(ctx context.OrionContext) errors.Error {
 		indexV, _ := index.AsBigFloat().Int64()
 		return helper.EvaluateArrayItemExpression(ctx.EvalContext(), set.name, int(indexV), set.value)
 	}
-	return helper.EvaluateExpressions(ctx.EvalContext(), map[string]hcl.Expression{
+	return helper.EvalUnorderedExpression(ctx.EvalContext(), map[string]hcl.Expression{
 		key: set.value,
 	})
 }

@@ -7,6 +7,6 @@ import (
 )
 
 func TestIsPluginBaseArgument(t *testing.T) {
-	assert.False(t, IsPluginBaseArgument("_"))
-	assert.True(t, IsPluginBaseArgument(ArgCount))
+	assert.False(t, IsCommonAttribute("_"))
+	assert.True(t, IsCommonAttribute(ArgCount))
 }

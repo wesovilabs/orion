@@ -7,15 +7,6 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
-// GetValueAsBool return the value as a bool.
-func GetValueAsBool(value cty.Value, def bool) bool {
-	if !value.IsNull() {
-		return value.True()
-	}
-
-	return def
-}
-
 // GetExpressionValueAsBool return the expression as bool.
 func GetExpressionValueAsBool(ctx *hcl.EvalContext, expr hcl.Expression, def bool) (bool, errors.Error) {
 	if expr == nil || expr.Range().Empty() {
@@ -30,5 +21,5 @@ func GetExpressionValueAsBool(ctx *hcl.EvalContext, expr hcl.Expression, def boo
 		return value.True(), nil
 	}
 
-	return false, nil
+	return def, nil
 }

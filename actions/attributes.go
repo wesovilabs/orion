@@ -34,8 +34,8 @@ var baseArgumentsNames = map[string]struct{}{
 	ArgItems: {},
 }
 
-// IsPluginBaseArgument returns true if the name is common for all the plugins.
-func IsPluginBaseArgument(name string) bool {
+// IsCommonAttribute returns true if the name is common for all the plugins.
+func IsCommonAttribute(name string) bool {
 	_, ok := baseArgumentsNames[name]
 
 	return ok

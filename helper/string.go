@@ -21,14 +21,6 @@ func GetExpressionValueAsString(ctx *hcl.EvalContext, expr hcl.Expression, def s
 	return ToString(value)
 }
 
-// GetValueAsString converts a given cty.Value into a string or returns a default valu.
-func GetValueAsString(value cty.Value, def string) string {
-	if !value.IsNull() {
-		return value.AsString()
-	}
-	return def
-}
-
 // ToString converts a given cty.Value into a string.
 func ToString(v cty.Value) (string, errors.Error) {
 	if v.IsNull() {
@@ -74,7 +66,7 @@ func ToString(v cty.Value) (string, errors.Error) {
 // AttributeToStringWithoutContext convert a hc Attribute into a string value.
 func AttributeToStringWithoutContext(attribute *hcl.Attribute) (string, errors.Error) {
 	if len(attribute.Expr.Variables()) > 0 {
-		return "", errors.IncorrectUsage("variables are not permited in attribute %s", attribute.Name)
+		return "", errors.IncorrectUsage("variables are not permitted in attribute %s", attribute.Name)
 	}
 	val, err := EvalAttribute(nil, attribute)
 	if err != nil {

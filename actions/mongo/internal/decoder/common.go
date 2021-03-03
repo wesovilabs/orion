@@ -33,7 +33,7 @@ func (b *BlockProperties) Values(ctx *hcl.EvalContext) (map[string]interface{}, 
 }
 
 func (b BlockProperties) Evaluate(ctx *hcl.EvalContext) errors.Error {
-	return helper.EvaluateExpressions(ctx, b.values)
+	return helper.EvalUnorderedExpression(ctx, b.values)
 }
 
 func NewBlockProperties(block *hcl.Block) (*BlockProperties, errors.Error) {

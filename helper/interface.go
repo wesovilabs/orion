@@ -30,7 +30,7 @@ func ToInterface(v cty.Value) (interface{}, errors.Error) {
 		for k, v := range valueMap {
 			item, err := ToInterface(v)
 			if err != nil {
-				return "", err
+				return nil, err
 			}
 			result[k] = item
 		}

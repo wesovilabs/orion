@@ -50,7 +50,7 @@ func (b *Block) populateAttributes(attrs hcl.Attributes) errors.Error {
 	for name := range attrs {
 		attribute := attrs[name]
 		switch {
-		case actions.IsPluginBaseArgument(name):
+		case actions.IsCommonAttribute(name):
 			if err := actions.SetBaseArgs(b, attribute); err != nil {
 				return err
 			}
@@ -119,8 +119,12 @@ func (dec *Decoder) DecodeBlock(block *hcl.Block) (actions.Action, errors.Error)
 		actions: make(actions.Actions, 0),
 		Base:    &actions.Base{},
 	}
+	b.SetKind(BlockBlock)
 	if err := b.populateAttributes(bodyContent.Attributes); err != nil {
 		return nil, err
+	}
+	if len(bodyContent.Blocks) == 0 {
+		return nil, errors.IncorrectUsage("block of type `%s` cannot be empty", BlockBlock)
 	}
 	if err := b.populateBlocks(bodyContent.Blocks); err != nil {
 		return nil, err

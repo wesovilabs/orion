@@ -14,15 +14,6 @@ func IsSlice(value cty.Value) bool {
 	return value.Type().IsListType() || value.Type().IsTupleType() || value.Type().IsCollectionType()
 }
 
-// ValuesSlice convert the value into a slice.
-func ValuesSlice(value cty.Value) ([]cty.Value, errors.Error) {
-	if value.Type().IsListType() || value.Type().IsTupleType() || value.Type().IsCollectionType() {
-		return value.AsValueSlice(), nil
-	}
-
-	return nil, errors.InvalidArguments("expected a slice field but it's not")
-}
-
 // ToStrictString convert the value into a string.
 func ToStrictString(value cty.Value) (string, errors.Error) {
 	if value.Type() == cty.String {
@@ -47,6 +38,15 @@ func ToValueMap(input map[string]interface{}) cty.Value {
 	return cty.ObjectVal(output)
 }
 
+func toValueMapString(input map[string]string) cty.Value {
+	output := make(map[string]cty.Value)
+	for name, value := range input {
+		output[name] = cty.StringVal(value)
+	}
+
+	return cty.MapVal(output)
+}
+
 // ToValueList convert the array into a value.
 func ToValueList(input []interface{}) cty.Value {
 	output := make([]cty.Value, len(input))
@@ -58,23 +58,51 @@ func ToValueList(input []interface{}) cty.Value {
 	return cty.TupleVal(output)
 }
 
+func toValueList(input []string) cty.Value {
+	output := make([]cty.Value, len(input))
+	for index := range input {
+		value := input[index]
+		output[index] = cty.StringVal(value)
+	}
+
+	return cty.TupleVal(output)
+}
+
 // ToValue convert the interface into a value.
 func ToValue(value interface{}) cty.Value {
 	switch v := value.(type) {
 	case string:
 		return cty.StringVal(v)
-	case int, int8, int16, int32, int64:
+	case int:
+		return cty.NumberIntVal(int64(v))
+	case int8, int16, int32, int64:
 		return cty.NumberIntVal(v.(int64))
 	case float32, float64:
 		return cty.NumberFloatVal(v.(float64))
 	case bool:
 		return cty.BoolVal(v)
+	case map[string]string:
+		return toValueMapString(v)
 	case map[string]interface{}:
 		return ToValueMap(v)
+	case []string:
+		return toValueList(v)
 	case []interface{}:
 		return ToValueList(v)
+	case []map[string]interface{}:
+		out := make([]cty.Value, len(v))
+		for index := range v {
+			item := v[index]
+			props := make(map[string]cty.Value)
+			for k, v := range item {
+				props[k] = ToValue(v)
+			}
+			out[index] = cty.MapVal(props)
+		}
+		return cty.ListVal(out)
 	case nil:
 		return cty.NilVal
+
 	default:
 		log.Fatal(fmt.Sprintf("unsupported type %s\n", v))
 	}
