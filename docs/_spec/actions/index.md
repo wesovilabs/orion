@@ -16,8 +16,9 @@ Documentation and examples of the existing actions can be found on the below lin
 - [assert](../assert)
 - [http](../http)
 - [mongo](../mongo).
-- [block](../block).
 - [call](../call).
+- [sleep](../sleep).
+- [block](../block).
 
 New actions are in progress: `graphql`, `grpc`, `mysql` and `postgres` among others. 
 

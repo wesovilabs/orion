@@ -1,33 +1,13 @@
 ---
 layout: default
-title: block
+title: sleep
 parent: Actions
-nav_order: 8
+nav_order: 7
 ---
 <link rel="stylesheet" href="../../../assets/css/custom.css">
-# block
-It  is used to group a set of actions.
+# sleep
 
-```hcl
-block {
-    set carOwner {
-        value = "John Doe"
-    }
-    print {
-        msg = "the owner of the car is ${carOwner}"
-    }
-    when = car.color=="red"
-}
-```
-
-**Supported actions:**
-- [set](../set)
-- [print](../print)
-- [assert](../assert)
-- [http](../http)
-- [mongo](../mongo)
-- [call](../call)
-- [sleep](../sleep)
+The action **sleep** is used to pause the execution for a specified duration.
 
 ## Specification
 
@@ -35,19 +15,31 @@ block {
 
 |                 | Tpye      | Required?| Vars supported? |
 |:----------------|:----------|---------:|----------------:|
+| **duration**    | duration  | yes      | yes             |
 | **description** | string    | no       | no              |
 | **while**       | boolean   | no       | yes             |
 | **when**        | boolean   | no       | yes             |
 | **count**       | numeric   | no       | yes             |
 
 
+**duration** ( duration \| required ) : It specified the `time.duration` to pause the execution.
+
+*Example 1: Basic use of argument duration*
+
+```hcl
+sleep {
+  duration = "2s"
+}
+```
+---
 **description** ( string \| optional )  It is used to apply descriptive text to  the action.
 
 *Example 1: Basic use of argument*
 
 ```hcl
-block{
-  description = "a new person is created and registered."
+sleep {
+  description = "this statement is used to pause the execution for 2 seconds"
+  duration = "2s"
 }
 ```
 ---
@@ -58,28 +50,28 @@ var {
   evalJobStatus = false
 }
 
-block{
-  when = evalJobStatus
+sleep {
+  duration = "2s"
+  when = evalJobStatus && exists(job)
 }
 ```
 ---
-**count** ( number || optional ) It determines the number of times the action is executed. Additionally, the variable **_.index** is increased in each iteration. 
-The value of _.index starts with 0 and it ends with count-1.
+**count** ( number || optional ) It determines the number of times the action is executed.
 
-*Example 1: Basic use of the argument*
+*Example 1: Basic use of the argument count*
 ```hcl
-block {
-
+sleep {
+  duration = "2s"
   count = 3
 }
 ```
-
 ---
 **while** ( boolean \| optional )  The action is executed repeatedly as long as the value of this argument is met. Additionally, the variable **_.index** is increased in each iteration. The value of _.index starts with 0 and increase in 1 in each iteration.
 
 *Example 1: Basic use of argument while*
 ```hcl
-block {
+assert {
+  duraiton = "2s"
   while = _.index<=2
 }
 ```
