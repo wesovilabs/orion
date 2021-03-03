@@ -10,6 +10,7 @@ import (
 	"github.com/wesovilabs/orion/actions/mongo"
 	pprint "github.com/wesovilabs/orion/actions/print"
 	"github.com/wesovilabs/orion/actions/set"
+	"github.com/wesovilabs/orion/actions/sleep"
 	"github.com/wesovilabs/orion/context"
 	"github.com/wesovilabs/orion/internal/errors"
 )
@@ -20,23 +21,25 @@ const (
 )
 
 var decoders = map[string]actions.Decoder{
-	set.BlockSet:       new(set.Decoder),
 	assert.BlockAssert: new(assert.Decoder),
-	pprint.BlockPrint:  new(pprint.Decoder),
+	call.BlockCall:     new(call.Decoder),
 	http.BlockHTTP:     new(http.Decoder),
 	mongo.BlockMongo:   new(mongo.Decoder),
-	call.BlockCall:     new(call.Decoder),
+	pprint.BlockPrint:  new(pprint.Decoder),
+	set.BlockSet:       new(set.Decoder),
+	sleep.BlockSleep:   new(sleep.Decoder),
 }
 
 var schemaBlock = &hcl.BodySchema{
 	Attributes: actions.BaseArguments,
 	Blocks: []hcl.BlockHeaderSchema{
 		decoders[assert.BlockAssert].BlockHeaderSchema(),
-		decoders[set.BlockSet].BlockHeaderSchema(),
-		decoders[pprint.BlockPrint].BlockHeaderSchema(),
+		decoders[call.BlockCall].BlockHeaderSchema(),
 		decoders[http.BlockHTTP].BlockHeaderSchema(),
 		decoders[mongo.BlockMongo].BlockHeaderSchema(),
-		decoders[call.BlockCall].BlockHeaderSchema(),
+		decoders[pprint.BlockPrint].BlockHeaderSchema(),
+		decoders[set.BlockSet].BlockHeaderSchema(),
+		decoders[sleep.BlockSleep].BlockHeaderSchema(),
 	},
 }
 
