@@ -14,6 +14,7 @@ o provide a **simple DSL to write the acceptance tests**. The syntax is inspired
 ## Tutorials & Guides
 
 - [Orion: A next-generation automation testing tool](https://ivan-corrales-solera.medium.com/orion-a-next-generation-automation-testing-tool-4ea53eeb2517)
+- [Orion in action: Testing a real API](https://ivan-corrales-solera.medium.com/orion-in-action-testing-a-real-api-a780244141a2)
 
 Additionally, a repository with a list of examples can be found [here](https://github.com/wesovilabs/orion-examples)
 
