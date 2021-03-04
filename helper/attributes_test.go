@@ -121,7 +121,7 @@ func TestEvaluateArrayItemExpression(t *testing.T) {
 	assert.True(t, element["fullName"].Equals(cty.StringVal("Jane Doe")).True())
 }
 
-func TestEvaluateArrayItemExpressionErrror(t *testing.T) {
+func TestEvaluateArrayItemExpressionError(t *testing.T) {
 	text := `
 		people = {
 			fullName = "Jane Doe"

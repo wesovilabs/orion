@@ -15,7 +15,7 @@ The action **call** is used to invoke defined functions.
 
 ### Arguments 
 
-|                 | Tpye      | Required?| Vars supported? |
+|                 | Type      | Required?| Vars supported? |
 |:----------------|:----------|---------:|----------------:|
 | **as**          | string    | no       | no              |
 | **description** | string    | no       | no              |

@@ -13,7 +13,7 @@ scenario "number comparisons" {
          msg="Input values are val1:${val1} and val2:${val2}"
      }
   }
-  then "result is the exapected"{
+  then "result is the expected"{
       assert {
           assertion= val1>val2 && val1>=val2 && val2<val1 && val2<=val1
       }

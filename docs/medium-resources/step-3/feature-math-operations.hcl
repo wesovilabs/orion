@@ -1,5 +1,5 @@
 description = <<EOF
-    This feature is used to demonstrate that both add and subs operations 
+    This feature is used to demonstrate that both add and subs operations
     work as expected.
 EOF
 
@@ -21,9 +21,9 @@ after each {
 scenario "operation add" {
     when "values are added" {
         set result {
-            value = opSum.a + opSum.b 
+            value = opSum.a + opSum.b
         }
-    } 
+    }
     then "the result of the operation is the expected" {
         assert {
             assertion = result==opSum.expected
@@ -31,12 +31,12 @@ scenario "operation add" {
     }
 }
 
-scenario "operation substract" {
+scenario "operation subtract" {
     when "values are subtracted" {
         set result {
-            value = opSub.a - opSub.b 
+            value = opSub.a - opSub.b
         }
-    } 
+    }
     then "the result of the operation is the expected" {
         assert {
             assertion = result==opSub.expected

@@ -56,7 +56,7 @@ To write valid scenarios must meet the following standards:
 - Section `given` must be followed of section `when`.
 - Section `when` must be followed of section `then`.
 
-As you could realize the structure of a valid sceneario will be G-W-T, W-T, but also G-W-T-W-T ....  
+As you could realize the structure of a valid scenario will be G-W-T, W-T, but also G-W-T-W-T ....  
 
 
 **Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature004.hcl)

@@ -24,7 +24,7 @@ func attributeToStringWithoutContext(attribute *hcl.Attribute) (string, errors.E
 
 func attributeToSliceWithoutContext(attribute *hcl.Attribute) ([]cty.Value, errors.Error) {
 	if len(attribute.Expr.Variables()) > 0 {
-		return nil, errors.IncorrectUsage("variables are not permited in attribute %s", attribute.Name)
+		return nil, errors.IncorrectUsage("variables are not permitted in attribute %s", attribute.Name)
 	}
 	value, err := helper.EvalAttribute(nil, attribute)
 	if err != nil {

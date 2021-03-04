@@ -66,7 +66,7 @@ func (s *Base) SetCount(count hcl.Expression) {
 	s.count = count
 }
 
-// SetCount set attribute count.
+// SetItems set attribute items.
 func (s *Base) SetItems(items hcl.Expression) {
 	s.items = items
 }

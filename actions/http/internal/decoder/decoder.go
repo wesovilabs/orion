@@ -108,7 +108,7 @@ func populateRequestBlocks(req *Request, blocks hcl.Blocks) errors.Error {
 		switch blockType {
 		case BlockConnection:
 			if len(blockList) > 1 {
-				return errors.ThrowsExceeddedNumberOfBlocks(BlockConnection, 1)
+				return errors.ThrowsExceededNumberOfBlocks(BlockConnection, 1)
 			}
 			connection, err := decodeConnection(blockList[0])
 			if err != nil {
@@ -126,7 +126,7 @@ func populateRequestBlocks(req *Request, blocks hcl.Blocks) errors.Error {
 			}
 		case BlockPayload:
 			if len(blockList) > 1 {
-				return errors.ThrowsExceeddedNumberOfBlocks(BlockPayload, 1)
+				return errors.ThrowsExceededNumberOfBlocks(BlockPayload, 1)
 			}
 			for index := range blockList {
 				payload, err := decodePayload(blockList[index])

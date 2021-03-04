@@ -83,7 +83,7 @@ func (p *Print) Format(ctx *hcl.EvalContext) (string, errors.Error) {
 	return helper.GetExpressionValueAsString(ctx, p.format, defFormat)
 }
 
-// Execute functin in charge of executing the plugin.
+// Execute function in charge of executing the plugin.
 func (p *Print) Execute(ctx context.OrionContext) errors.Error {
 	return actions.Execute(ctx, p.Base, func(ctx context.OrionContext) errors.Error {
 		evalCtx := ctx.EvalContext()

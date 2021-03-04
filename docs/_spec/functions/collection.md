@@ -15,7 +15,7 @@ nav_order: 4
 | at            | It returns element in position `pos`in the collection `coll`|   at(coll,post)|
 | first  | It returns the first element in the collection `coll` | first(coll) | 
 | last  | It returns the last element in the collection `coll` | last(coll) | 
-| len  | It returns the numer of elements in the collection `coll` | len(coll) | 
+| len  | It returns the number of elements in the collection `coll` | len(coll) | 
 
 
 **Example** [download](https://raw.githubusercontent.com/wesovilabs/orion-examples/master/site/feature016.hcl)

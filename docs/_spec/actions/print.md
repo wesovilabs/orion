@@ -13,7 +13,7 @@ The action **print** prints messages to the stdout.
 
 ### Arguments 
 
-|                 | Tpye      | Required?| Vars supported? |
+|                 | Type      | Required?| Vars supported? |
 |:----------------|:----------|---------:|----------------:|
 | **msg**         | string    | yes      | yes             |
 | **prefix**      | string    | no       | yes             |
@@ -58,7 +58,7 @@ print {
 >> Hello Mr DOE
 ```
 --- 
-**prefix** ( string \| optional ): Text which is placed before the message. In case of being provided a whitespace is printed betwen `prefxi` and `msg`.
+**prefix** ( string \| optional ): Text which is placed before the message. In case of being provided a whitespace is printed between `prefix` and `msg`.
 
 *Example 1: Basic use of argument prefix* 
 
@@ -103,7 +103,7 @@ print {
 >> 2013-02-23 12::05:12 There pub is closed 
 ```
 --- 
-**timestampFormat** ( string \| optional ):  It allows you to determine the format of the timestamp. Argument showTimestamp can be omitted when timestampFormat is provied.
+**timestampFormat** ( string \| optional ):  It allows you to determine the format of the timestamp. Argument showTimestamp can be omitted when timestampFormat is provided.
 
 | Symbol|      Desc     |
 |-------|:-------------:|

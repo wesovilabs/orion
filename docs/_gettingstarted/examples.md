@@ -17,7 +17,7 @@ git clone git@github.com:wesovilabs/orion-examples.git
 
 ## Preconditions
 
-Orion must be installed in your computes. [Visti the documentation](../installation)
+Orion must be installed in your computes. [Visit the documentation](../installation)
 
 ## Examples
 

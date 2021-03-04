@@ -3,7 +3,7 @@ input {
         default ="hello world"
     }
 }
-scenario "check trim funcion" {
+scenario "check trim function" {
     when "evaluate a variable" {
         set res1 {
             value = trimPrefix(input,"hello ")

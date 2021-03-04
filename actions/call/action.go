@@ -40,7 +40,7 @@ func (c *Call) populateAttributes(attrs hcl.Attributes) errors.Error {
 
 func (c *Call) populateBlocks(blocks hcl.Blocks) errors.Error {
 	if len(blocks) > 1 {
-		return errors.ThrowsExceeddedNumberOfBlocks(blockWith, 1)
+		return errors.ThrowsExceededNumberOfBlocks(blockWith, 1)
 	}
 	if len(blocks) == 0 {
 		return nil

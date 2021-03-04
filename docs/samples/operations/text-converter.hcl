@@ -3,7 +3,7 @@ input {
       default ="Hello world"
   }
 }
-scenario "check string converter oeprations" {
+scenario "check string converter operations" {
   when "convert the input" {
       set res1 {
           value = toLowercase(s)
@@ -27,8 +27,8 @@ scenario "check string converter oeprations" {
   then "check results"{
       assert {
           assertion = (
-              eq(res1,"hello world") &&  eq(res2,"HELLO WORLD") && 
-              eq(res3,"world") &&  eq(res4,"Hello") && 
+              eq(res1,"hello world") &&  eq(res2,"HELLO WORLD") &&
+              eq(res3,"world") &&  eq(res4,"Hello") &&
               eq(res5,"Bye world") &&  eq(res6,"Hella warld")
           )
       }

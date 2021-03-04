@@ -11,7 +11,7 @@ import (
 
 var expectedBodiesDecodeErrs = map[string]struct{}{
 	"testdata/body.hcl:6,3-7: Unsupported argument; An argument named \"name\" is not expected here.": {},
-	"blcok 'body' must contain one action at least":                                                   {},
+	"block 'body' must contain one action at least":                                                   {},
 }
 
 var expectedBodiesActions = []int{0, 0, 1, 2}

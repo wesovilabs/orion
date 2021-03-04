@@ -8,7 +8,7 @@ nav_order: 3
 # assert
 
 The action **assert** is used to verify the condition is satisfied. If condition
-was not satisfied the scenario would ends with enttot and next actions wouldn't be executed.
+was not satisfied the scenario ends with an error and next actions are not executed.
 
 ## Specification
 
