@@ -64,7 +64,7 @@ func (exec *executor) findOne(db *mongo.Database) (map[string]interface{}, error
 func (exec *executor) updateMany(db *mongo.Database) errors.Error {
 	ctx := exec.ctx
 	collection := db.Collection(exec.collection)
-	log.Debug("mongo updateManu operation")
+	log.Debug("mongo updateMany operation")
 	update := bson.D{
 		bson.E{Key: attrSet, Value: exec.set},
 	}

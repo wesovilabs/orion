@@ -1,4 +1,4 @@
-scenario "do some math opertions" {
+scenario "do some math operations" {
     given "a number higher than zero" {
         set number {
             value  = 5
@@ -14,7 +14,7 @@ scenario "do some math opertions" {
             assertion = result==sqr(number)
         }
     }
-    when "the numer is added to the current value" {
+    when "the number is added to the current value" {
         set result {
             value = result + 5
         }

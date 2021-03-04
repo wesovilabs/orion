@@ -30,7 +30,7 @@ var (
 	`
 	example = `
 		# Execute the scenario in file feature.hcl
-		orion run --feature feature.hcl
+		orion run --input feature.hcl
 	`
 	inputPath     string
 	variablesPath string

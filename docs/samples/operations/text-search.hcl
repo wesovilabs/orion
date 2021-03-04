@@ -3,7 +3,7 @@ input {
       default ="Hello world"
   }
 }
-scenario "check string search oeprations" {
+scenario "check string search operations" {
   when "do the operations" {
       set res1 {
           value = contains(s,"world")
@@ -24,7 +24,7 @@ scenario "check string search oeprations" {
           value = lastIndexOf(s,"l")
       }
   }
-  then "the result is the exapected"{
+  then "the result is the expected"{
       assert {
           assertion = res1 && res2 && res3 && res4==3 && res5==2 && res6==9
       }

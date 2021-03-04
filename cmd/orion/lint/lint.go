@@ -23,7 +23,7 @@ var (
 	`
 	example = `
 		# Execute the scenario in file feature.hcl
-		orion lint --feature feature.hcl
+		orion lint --input feature.hcl
 	`
 	inputPath string
 )

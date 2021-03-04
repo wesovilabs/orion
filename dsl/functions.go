@@ -56,7 +56,7 @@ func decodeFunc(block *hcl.Block) (*Function, errors.Error) {
 		switch name {
 		case blockInput:
 			if len(blocks) > 1 {
-				return nil, errors.ThrowsExceeddedNumberOfBlocks(blockBody, 1)
+				return nil, errors.ThrowsExceededNumberOfBlocks(blockBody, 1)
 			}
 			input, err := decodeInput(blocks[0])
 			if err != nil {
@@ -65,7 +65,7 @@ func decodeFunc(block *hcl.Block) (*Function, errors.Error) {
 			function.input = input
 		case blockBody:
 			if len(blocks) > 1 {
-				return nil, errors.ThrowsExceeddedNumberOfBlocks(blockBody, 1)
+				return nil, errors.ThrowsExceededNumberOfBlocks(blockBody, 1)
 			}
 			if len(blocks) == 1 {
 				body, err := decodeBody(blocks[0])
@@ -76,7 +76,7 @@ func decodeFunc(block *hcl.Block) (*Function, errors.Error) {
 			}
 		case blockReturn:
 			if len(blocks) > 1 {
-				return nil, errors.ThrowsExceeddedNumberOfBlocks(blockReturn, 1)
+				return nil, errors.ThrowsExceededNumberOfBlocks(blockReturn, 1)
 			}
 			if len(blocks) == 1 {
 				ret, err := decodeReturn(blocks[0])

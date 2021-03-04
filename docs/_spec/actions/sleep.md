@@ -13,7 +13,7 @@ The action **sleep** is used to pause the execution for a specified duration.
 
 ### Arguments 
 
-|                 | Tpye      | Required?| Vars supported? |
+|                 | Type      | Required?| Vars supported? |
 |:----------------|:----------|---------:|----------------:|
 | **duration**    | duration  | yes      | yes             |
 | **description** | string    | no       | no              |
@@ -71,7 +71,7 @@ sleep {
 *Example 1: Basic use of argument while*
 ```hcl
 assert {
-  duraiton = "2s"
+  duration = "2s"
   while = _.index<=2
 }
 ```

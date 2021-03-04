@@ -33,7 +33,7 @@ block {
 
 ### Arguments 
 
-|                 | Tpye      | Required?| Vars supported? |
+|                 | Type      | Required?| Vars supported? |
 |:----------------|:----------|---------:|----------------:|
 | **description** | string    | no       | no              |
 | **while**       | boolean   | no       | yes             |

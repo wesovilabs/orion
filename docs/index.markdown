@@ -13,7 +13,7 @@ Orion is born to simplify the way we write our acceptance tests.
 ```hcl
 input {
   arg ghBase {
-    default = "hattps://api.github.com"
+    default = "https://api.github.com"
   }
   arg expect {}
   arg orgId {}

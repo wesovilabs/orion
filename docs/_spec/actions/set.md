@@ -9,13 +9,13 @@ nav_order: 1
 
 # set
 
-The action **set** is used to add a new (or update) value for a varibale.
+The action **set** is used to add a new (or update) value for a variable.
 
 ## Specification
 
 ### Arguments 
 
-|                 | Tpye      | Required?| Vars supported? |
+|                 | Type      | Required?| Vars supported? |
 |:----------------|:----------|---------:|----------------:|
 | **value**       | string    | yes      | yes             |
 | **arrayIndex**  | numeric   | no       | yes             |
@@ -27,7 +27,7 @@ The action **set** is used to add a new (or update) value for a varibale.
 
 **value** ( any \| required ) : Expression to be evaluated. 
 
-*Example 1: Basic use of argument setion*
+*Example 1: Basic use of argument section*
 
 ```hcl
 set firstname{
@@ -49,13 +49,13 @@ set john{
     country = toUppercase(countryName)
   }
 }
-// john.firstanem is John, john.lastname is Doe and country is SPAIN
+// john.firstname is John, john.lastname is Doe and country is SPAIN
 ```
 ---
 
 **arrayIndex** ( numeric \| optional ) : If variable is an array, we can modify it partially. 
 
-*Example 1: Basic use of argument setion*
+*Example 1: Basic use of argument section*
 
 ```hcl
 set heroes {

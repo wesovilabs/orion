@@ -5,7 +5,7 @@ trait print debugger {
 }
 
 scenario "demo of traits" {
-    when "prints a message with {
+    when "prints a message with" {
         debugger {
             msg = "hello my friend"
         }

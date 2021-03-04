@@ -33,7 +33,7 @@ scenario "check boolean operations" {
          value = !val1
      }
   }
-  then "the result is the exapected"{
+  then "the result is the expected"{
       assert {
           assertion = val1 && !val2 && (val1 || val2) && !val2 && val2==false 
       }

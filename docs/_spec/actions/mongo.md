@@ -10,7 +10,7 @@ nav_order: 5
 work in progress
 {: .label .label-yellow }
 
-It's used to deal with mongo operations. It's represented with keyword `mongo` followe by a label.
+It's used to deal with mongo operations. It's represented with keyword `mongo` followed by a label.
 
 **example.hcl**
 ```hcl
@@ -110,7 +110,7 @@ http get {
 }
 ```
 --- 
-**timeout** It used to esablish the client tmeout.. Its value must be represented in duration format. (1m | 1s).
+**timeout** It is used to establish the client timeout. Its value must be represented in duration format. (1m | 1s).
 
 ```hcl
  mongo drop {

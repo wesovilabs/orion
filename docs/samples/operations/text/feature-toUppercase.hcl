@@ -3,7 +3,7 @@ input {
         default ="hello world"
     }
 }
-scenario "check eq funcion" {
+scenario "check eq function" {
     when "evaluate a variable" {
         set res1 {
             value = toUppercase(input)

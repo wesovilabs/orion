@@ -32,7 +32,7 @@ func decodeReturn(block *hcl.Block) (*Return, errors.Error) {
 		return nil, err
 	}
 	if len(bodyContent.Blocks) > 0 {
-		return nil, errors.IncorrectUsage("blocks are not permited in '%s'", blockReturn)
+		return nil, errors.IncorrectUsage("blocks are not permitted in '%s'", blockReturn)
 	}
 	ret := &Return{}
 	for name, value := range bodyContent.Attributes {

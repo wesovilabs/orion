@@ -29,7 +29,7 @@ func decodeBody(block *hcl.Block) (*Body, errors.Error) {
 		return nil, errors.ThrowUnsupportedArguments(blockBody)
 	}
 	if len(bodyContent.Blocks) == 0 {
-		return nil, errors.IncorrectUsage("blcok '%s' must contain one action at least", blockBody)
+		return nil, errors.IncorrectUsage("block '%s' must contain one action at least", blockBody)
 	}
 	actions, err := handler.DecodePlugins(bodyContent.Blocks)
 	if err != nil {

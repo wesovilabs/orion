@@ -16,7 +16,7 @@ scenario "print variables" {
             value = people[_.index]
         }
         print {
-            msg = "${person.firstname} ${person.lastname} is hiread at ${company}"  
+            msg = "${person.firstname} ${person.lastname} is hired at ${company}"
         }
         while = _.index < len(people)
     }

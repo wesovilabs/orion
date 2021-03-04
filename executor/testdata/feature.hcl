@@ -27,7 +27,7 @@ scenario "operation add" {
     }
   }
 }
-scenario "operation substract" {
+scenario "operation subtract" {
   given "variables x and y" {
     set x {
       value = 10

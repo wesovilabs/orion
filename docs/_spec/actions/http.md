@@ -116,7 +116,7 @@ http post {
 --- 
 **QueryParams**:  
 
-They're represneted by a block named `queryParams` that contains the list of params to be appended to the path.
+They're represented by a block named `queryParams` that contains the list of params to be appended to the path.
 
 ```hcl
 http get {
@@ -134,7 +134,7 @@ http get {
 ```
 --- 
 **Headers**
-They're represneted by a block named `headers` that contains the list of headers to be sent. The value of each header can be a `string` or a `list of string` values.
+They're represented by a block named `headers` that contains the list of headers to be sent. The value of each header can be a `string` or a `list of string` values.
 
 ```hcl
 http get {

@@ -2,7 +2,7 @@ package dsl
 
 import (
 	"github.com/hashicorp/hcl/v2"
-	assert "github.com/wesovilabs/orion/actions/assert"
+	"github.com/wesovilabs/orion/actions/assert"
 
 	"github.com/wesovilabs/orion/internal/errors"
 )
